@@ -19,5 +19,8 @@
   },
   "devDependencies": {
     "cordova-android": "^14.0.1"
+  },
+  "dependencies": {
+    "firebase": "^12.9.0"
   }
 }
