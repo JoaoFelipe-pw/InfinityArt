@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="pt.com.InfinityArt" version="1.0.0"
+    xmlns="http://www.w3.org/ns/widgets"
+    xmlns:cdv="http://cordova.apache.org/ns/1.0">
+
+    <name>InfinityArt</name>
+
+    <description>
+        Uma aplicação desenvolvida para a PAP e para a InfinityArt
+    </description>
+
+    <author email="joao.fa.pereira@aeja.pt" href="https://www.graficainfinityart.pt/">
+        Apache Cordova Team
+    </author>
+
+    <platform name="android">
+    <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/screen/splashscreen.xml" />
+    <preference name="AndroidWindowSplashScreenBackground" value="#0E1B4C" />
+    <icon src="res/icon.jpg" />
+    </platform>
+
+    <content src="index.html" />
+
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+
+
+</widget>

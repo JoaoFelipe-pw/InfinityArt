@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-PT"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Histórico de Compras - Grafica InfinityArt</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FF8C00", // Brand Orange
+                        "brand-blue": "#0A1F44", // Deep Professional Blue
+                        "brand-light-blue": "#1E3A8A",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#050B14",
+                        "brandi-blue":"#0047AB",
+                        "brand-orange":"#FF8C00",   
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        :root {
+            --primary-color: #0047AB;
+            --secondary-color: #FF8C00;
+        }
+    </style>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .ios-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display min-h-screen">
+<header class="sticky top-0 z-50 bg-background-light/90 dark:bg-background-dark/90 ios-blur border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center p-4 pb-2 justify-between">
+<div class="flex size-10 shrink-0 items-center justify-start text-brand-blue dark:text-brand-blue cursor-pointer">
+<span class="material-symbols-outlined text-3xl">chevron_left</span>
+</div>
+<div class="flex-1 flex flex-col items-center">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight">Histórico de Compras</h2>
+<p class="text-[10px] text-brand-orange font-bold uppercase tracking-widest">InfinityArt</p>
+</div>
+<div class="flex w-10 items-center justify-end">
+<button class="flex cursor-pointer items-center justify-center rounded-lg h-10 w-10 bg-transparent text-brand-blue">
+<span class="material-symbols-outlined text-2xl">more_horiz</span>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-md mx-auto pb-28">
+<div class="px-4 py-4">
+<label class="flex flex-col min-w-40 h-11 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full shadow-sm bg-white dark:bg-[#1A2633] border border-slate-200 dark:border-slate-800">
+<div class="text-slate-400 dark:text-slate-500 flex items-center justify-center pl-4">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-xl text-slate-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-transparent h-full placeholder:text-slate-400 dark:placeholder:text-slate-500 px-3 text-base font-normal leading-normal" placeholder="Pesquisar produtos..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex gap-3 px-4 pb-4 overflow-x-auto no-scrollbar scroll-smooth">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-brandi-blue px-5 shadow-lg shadow-brand-blue/20">
+<p class="text-white text-sm font-semibold leading-normal">Todos</p>
+<span class="material-symbols-outlined text-white text-lg">keyboard_arrow_down</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-[#1A2633] px-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-slate-700 dark:text-slate-300 text-sm font-medium leading-normal">Últimos 30 dias</p>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500 text-lg">keyboard_arrow_down</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-[#1A2633] px-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-slate-700 dark:text-slate-300 text-sm font-medium leading-normal">Em processamento</p>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500 text-lg">keyboard_arrow_down</span>
+</button>
+</div>
+<div class="px-4 pt-4 pb-2">
+<div class="flex justify-between items-center mb-2 px-1">
+<span class="text-[10px] font-bold uppercase text-slate-400 dark:text-slate-500 tracking-wider">Produto</span>
+<div class="flex gap-12">
+<span class="text-[10px] font-bold uppercase text-slate-400 dark:text-slate-500 tracking-wider">Data</span>
+<span class="text-[10px] font-bold uppercase text-slate-400 dark:text-slate-500 tracking-wider w-12 text-right">Valor</span>
+</div>
+</div>
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight flex items-center gap-2">
+<span class="w-1 h-5 bg-brand-orange rounded-full"></span>
+                Encomendas Recentes
+            </h3>
+</div>
+<div class="flex flex-col px-4 gap-4">
+<div class="flex items-center gap-4 bg-white dark:bg-[#1A2633] px-4 min-h-[96px] py-4 rounded-xl border border-slate-200 dark:border-slate-800/80 shadow-sm shadow-slate-200/50 dark:shadow-none active:scale-[0.98] transition-all">
+<div class="flex items-center gap-4 flex-1">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-16 flex items-center justify-center bg-brand-blue/5 border border-slate-100 dark:border-slate-700" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAbh-9XrG_E6eTNNpolt9iLTyG4V4H23_nI-Dm4ZTW67qIu3LC8x0U09lBV33ssVYUe83UsKF0fTdh3OWDbN54SHHabDDZjS9n2UOZuJ1eJvvXQdtBxDivEXenOU0mEpcahM6yHXCwepeoNgCfoy3kg1mXYICgwsNrrUXlDgCSSy444XwLHARkFlZOK180dbMhIcAa7PRxzW2Ij_E-EY5ekehSv6TDcZeg_fske14MPQVBoAqvJcuJLc3To2SPOrqWEqVAUjgtn2reW");'>
+</div>
+<div class="flex flex-col justify-center gap-1">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight line-clamp-1">Cartões de Visita (Premium)</p>
+<div class="flex items-center gap-2">
+<span class="flex h-1.5 w-1.5 rounded-full bg-green-500"></span>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium leading-normal">Entregue • 24 Out, 2023</p>
+</div>
+</div>
+</div>
+<div class="shrink-0 text-right flex flex-col items-end gap-1">
+<p class="text-brand-orange font-black text-lg leading-none">45,00€</p>
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-600 text-lg">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-[#1A2633] px-4 min-h-[96px] py-4 rounded-xl border border-slate-200 dark:border-slate-800/80 shadow-sm shadow-slate-200/50 dark:shadow-none active:scale-[0.98] transition-all">
+<div class="flex items-center gap-4 flex-1">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-16 flex items-center justify-center bg-brand-blue/5 border border-slate-100 dark:border-slate-700" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCvX45JDn1ZHEeuqGeaWAJR7eV_cRCF2XfODEghtDtC5V7VVdEL3bKAmgGGkAVW9tFxwYPKbB6NM1a3RTE6S8TnPuZX3gRGLb9_GYpMh1tIJfj0uCVxbWUrqCSvrtIfxm4pAirnFwxQjDl5x7hQErk2BT9q3RLET_BjRPlBu_lQh9eDOlMy5JH0z1TwM87HIk54MQf5JK7DYrwHIJeYZ9sGnKf4DX2yWIoQvw4LyXhWauYCdwqnZ-5YiRMgJ3Xb0Y7YoEsRkAYcLiE0");'>
+</div>
+<div class="flex flex-col justify-center gap-1">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight line-clamp-1">Banner Vinil (2x4ft)</p>
+<div class="flex items-center gap-2">
+<span class="flex h-1.5 w-1.5 rounded-full bg-brand-orange animate-pulse"></span>
+<p class="text-brand-orange text-xs font-bold leading-normal">Em Produção • 02 Nov</p>
+</div>
+</div>
+</div>
+<div class="shrink-0 text-right flex flex-col items-end gap-1">
+<p class="text-brand-orange font-black text-lg leading-none">120,00€</p>
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-600 text-lg">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-[#1A2633] px-4 min-h-[96px] py-4 rounded-xl border border-slate-200 dark:border-slate-800/80 shadow-sm shadow-slate-200/50 dark:shadow-none active:scale-[0.98] transition-all">
+<div class="flex items-center gap-4 flex-1">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-16 flex items-center justify-center bg-brand-blue/5 border border-slate-100 dark:border-slate-700" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAIZqmUMPYmrF62uind0wwuGOZra-TocndFDd1MBY3ZJw3K7nRiqqmGyzCbDPnmVKHJ7x4Iq-rvWJEt_7Hut29wRsyE3Z1j-zd0VZSATvX4KhSbiUcoekWNJ-fwwrhkmuMVUE6DLNFpq_asq-qwhKsWwIFPq03RpLsVwjydtZ8GRYRqOR2UE_ielhWtsBlALPwlswlNkb3uTPqBOXDRUAp8bzqXMTE_dk8Jr4Ry6-Iw8IW4iT_vhPawdfnK0RjmPqQfhhuPmma7vIqs");'>
+</div>
+<div class="flex flex-col justify-center gap-1">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight line-clamp-1">Flyers de Marketing (x1000)</p>
+<div class="flex items-center gap-2">
+<span class="flex h-1.5 w-1.5 rounded-full bg-green-500"></span>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium leading-normal">Entregue • 28 Set, 2023</p>
+</div>
+</div>
+</div>
+<div class="shrink-0 text-right flex flex-col items-end gap-1">
+<p class="text-brand-orange font-black text-lg leading-none">85,00€</p>
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-600 text-lg">chevron_right</span>
+</div>
+</div>
+</div>
+<div class="px-4 pt-8 pb-2">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight flex items-center gap-2">
+<span class="w-1 h-5 bg-slate-300 dark:bg-slate-700 rounded-full"></span>
+                Meses Anteriores
+            </h3>
+</div>
+<div class="px-4 pb-12">
+<div class="flex items-center gap-4 bg-white dark:bg-[#1A2633] px-4 min-h-[96px] py-4 rounded-xl border border-slate-200 dark:border-slate-800/80 shadow-sm opacity-90">
+<div class="flex items-center gap-4 flex-1">
+<div class="bg-slate-100 dark:bg-slate-800 aspect-square rounded-lg size-16 flex items-center justify-center border border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-slate-400 text-3xl">inventory_2</span>
+</div>
+<div class="flex flex-col justify-center gap-1">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight line-clamp-1">Flyers Económicos (P&amp;B)</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium leading-normal">Entregue • 12 Ago, 2023</p>
+</div>
+</div>
+<div class="shrink-0 text-right flex flex-col items-end gap-1">
+<p class="text-brand-orange font-bold text-lg leading-none">32,00€</p>
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-600 text-lg">chevron_right</span>
+</div>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] bg-white/80 dark:bg-brand-blue/90 ios-tab-bar border-t border-gray-200 dark:border-white/10 px-6 py-3 flex items-center justify-between z-30">
+
+  <a href="Menu.html" class="flex flex-col items-center gap-1 group cursor-pointer">
+    <span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">home</span>
+    <span class="text-[10px] font-bold text-gray-400 group-hover:text-primary uppercase tracking-tighter">Início</span>
+  </a>
+
+  <a href="Encomendas.html" class="flex flex-col items-center gap-1 group cursor-pointer">
+    <span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">shopping_bag</span>
+    <span class="text-[10px] font-bold text-gray-400 group-hover:text-primary uppercase tracking-tighter">Encomendas</span>
+  </a>
+
+  <a href="Historico.html" class="flex flex-col items-center gap-1 group cursor-pointer">
+    <span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">history</span>
+    <span class="text-[10px] font-bold text-gray-400 group-hover:text-primary uppercase tracking-tighter">Histórico</span>
+  </a>
+
+  <a href="Perfil.html" class="flex flex-col items-center gap-1 group cursor-pointer">
+    <span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">person</span>
+    <span class="text-[10px] font-bold text-gray-400 group-hover:text-primary uppercase tracking-tighter">Perfil</span>
+  </a>
+  
+</nav>
+
+</body></html>

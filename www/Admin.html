@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "accent-orange": "#f97316",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1a2530",
+                        "border-dark": "#2d3a4b",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- iOS Status Bar Spacer -->
+<div class="h-12 w-full bg-background-light dark:bg-background-dark sticky top-0 z-50 flex items-center px-6 justify-between border-b border-primary/10">
+<div class="flex items-center gap-2">
+<span class="font-bold text-lg tracking-tight">InfinityArt</span>
+<span class="bg-primary/20 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider border border-primary/30">Admin</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="text-slate-500 hover:text-primary transition-colors">
+<span class="material-icons-round text-xl">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center">
+<span class="material-icons-round text-primary text-lg">account_circle</span>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<main class="p-4 pb-24 space-y-6">
+<!-- Welcome Header -->
+<div>
+<h1 class="text-2xl font-bold">Painel de Administração</h1>
+<p class="text-slate-500 text-sm">Bem-vindo de volta, Administrador</p>
+</div>
+<!-- Summary Tiles (KPIs) -->
+<div class="grid grid-cols-2 gap-4">
+<div class="col-span-2 bg-primary dark:bg-primary rounded-xl p-5 shadow-lg shadow-primary/20 flex justify-between items-center text-white">
+<div>
+<p class="text-white/80 text-xs font-medium uppercase tracking-wider">Total de Vendas</p>
+<h2 class="text-3xl font-bold mt-1">R$ 12.450,00</h2>
+</div>
+<div class="bg-white/20 p-3 rounded-lg">
+<span class="material-icons-round text-3xl">payments</span>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-border-dark shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="material-icons-round text-accent-orange bg-accent-orange/10 p-2 rounded-lg text-xl">shopping_basket</span>
+</div>
+<p class="text-slate-500 text-[11px] font-semibold uppercase tracking-wider">Novas Encomendas</p>
+<h3 class="text-2xl font-bold">14</h3>
+</div>
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-border-dark shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="material-icons-round text-primary bg-primary/10 p-2 rounded-lg text-xl">inventory_2</span>
+</div>
+<p class="text-slate-500 text-[11px] font-semibold uppercase tracking-wider">Produtos Vendidos</p>
+<h3 class="text-2xl font-bold">186</h3>
+</div>
+</div>
+<!-- Pending Orders List -->
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<h2 class="text-lg font-bold">Clientes</h2>
+<a class="text-primary text-sm font-medium" href="#">Ver todas</a>
+</div>
+<!-- List of Order Cards -->
+<div class="space-y-3">
+<!-- Order Card 1 -->
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-border-dark flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-800 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Exemplo de material gráfico impresso colorido" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWvGsXnUTnqssrsY33LBeSYML92GBzjeBmMolry-IEj0iduMI3WSSXDA_7cYe6pq06bSVdgB185mtlMeRTN8qlIQWUxdVMtuUi8YRlwBFWHUf5IO0II8qi10ydpCG5er-Bgzlt020HWWE1dhdmHzH4Vd9i-G-KE3zBP0VampyR-mDVzFZ9MqdRQBUtpgFqE3PlSAmRv7fHXMYFWERnsQvp_46OCtp6pVXsnntBRSRRjCqkHhGeTlxFS6U-MM5tvX5W-zH6UKcByPnt"/>
+</div>
+<div>
+<p class="text-sm font-bold">#ORD-2849</p>
+<p class="text-xs text-slate-500">João Silva • € 45,00</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="w-2 h-2 rounded-full bg-accent-orange"></span>
+<span class="text-[10px] text-accent-orange font-bold uppercase tracking-tight">Pendente</span>
+</div>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white text-xs font-bold py-2 px-4 rounded-lg transition-all active:scale-95 shadow-md shadow-primary/20">
+                        Gerir
+                    </button>
+</div>
+<!-- Order Card 2 -->
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-border-dark flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-800 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Design de cartões de visita profissionais" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdparBydajzblFW8JVJrYWfXJDuOTawMvLHdDf07zvEDju0G8jhZ99hpf83GAA2-kUO0BgAPwsFL_0eFywVxFbI1CmlgeukP2z_Pnr7K-jR8r_2jfEOl4RFQPJJ_B_1dRfCAx8v9ZxafeEmGBC_mgnHY_wXGMCKz5I1XtCKHHhfV_d8i-HZrzueAp0hAcEYaF1zyIyyQA5IDfcJsbcMKlc86jyi3IGXtTwXGHY45ysomflWdPzsjDa5LLp8_APbEzsa2JMAwyUSsf0"/>
+</div>
+<div>
+<p class="text-sm font-bold">#ORD-2850</p>
+<p class="text-xs text-slate-500">Maria Oliveira • € 120,00</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="w-2 h-2 rounded-full bg-accent-orange"></span>
+<span class="text-[10px] text-accent-orange font-bold uppercase tracking-tight">Pendente</span>
+</div>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white text-xs font-bold py-2 px-4 rounded-lg transition-all active:scale-95 shadow-md shadow-primary/20">
+                        Gerir
+                    </button>
+</div>
+<!-- Order Card 3 -->
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-border-dark flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-800 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Brindes personalizados e canecas sublimadas" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClqWsEaNNK4ZAp0SyABxN8r3L6U1o67H7xRyIf6GpIz-7A-U4gSMD1YKYTQ21crZlUfyoKUG1hojxsYXJ_umImxxZ2LAC91xrvXc28cntuutAYzAwe6K8nZaZi3sz29yWSTbtodAZTdIc3p_IRwxIvlmE1HRMb9S0_MgfDDeE-2Ej11qOf8ga0tbUMyRMWxdN-RAEErm4-Y9VkqmqS-imBveLZRA9XitvwxOIurD8Eq8bHgXV4ap_QdtzFvqfBgbNBd_rp-DyQMClm"/>
+</div>
+<div>
+<p class="text-sm font-bold">#ORD-2851</p>
+<p class="text-xs text-slate-500">Carlos Rocha • € 85,90</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="w-2 h-2 rounded-full bg-accent-orange"></span>
+<span class="text-[10px] text-accent-orange font-bold uppercase tracking-tight">Pendente</span>
+</div>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white text-xs font-bold py-2 px-4 rounded-lg transition-all active:scale-95 shadow-md shadow-primary/20">
+                        Gerir
+                    </button>
+</div>
+</div>
+</div>
+
+</main>
+<!-- iOS Tab Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-background-dark/80 backdrop-blur-xl border-t border-slate-200 dark:border-border-dark px-6 py-2 pb-8 flex justify-between items-center z-50">
+<a href="Menu.html" class="flex flex-col items-center gap-1 text-primary">
+<span class="material-icons-round">dashboard</span>
+<span class="text-[10px] font-bold">Início</span>
+</a>
+<a href="Menu.html" class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-icons-round">shopping_bag</span>
+<span class="text-[10px] font-medium">Pedidos</span>
+</a>
+<a href="Menu.html" class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-icons-round">inventory</span>
+<span class="text-[10px] font-medium">Stock</span>
+</a>
+<a href="Menu.html" class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-icons-round">settings</span>
+<span class="text-[10px] font-medium">Ajustes</span>
+</a>
+</nav>
+</body></html>
