@@ -34,7 +34,12 @@
 <style type="text/tailwindcss">
         @layer base {
             body {
-                @apply bg-background-dark font-display text-white min-h-screen flex flex-col;
+                background-color: #020817;
+                font-family: Inter, sans-serif;
+                color: #ffffff;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
                 background: radial-gradient(circle at center, #0a1e3d 0%, #020817 100%);
             }
         }
@@ -85,11 +90,11 @@
 <div class="flex flex-col gap-2">
 <div class="flex justify-between items-center px-1">
 <label class="text-slate-300 text-sm font-medium">Palavra-passe</label>
-<a class="text-accent text-xs font-semibold hover:underline" href="#">Esqueceu-se da palavra-passe?</a>
+<a class="text-accent text-xs font-semibold hover:underline" href="esqueceu_senha.html">Esqueceu-se da palavra-passe?</a>
 </div>
 <div class="relative">
 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">lock</span>
-<input class="w-full bg-deep-space/50 border border-white/10 rounded-2xl h-14 pl-12 pr-12 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all" placeholder="••••••••" type="password"/>
+<input class="w-full bg-deep-space/50 border border-white/10 rounded-2xl h-14 pl-12 pr-12 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all" placeholder="••••••••"  type="password"/>
 <button class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white">
 <span class="material-symbols-outlined">visibility</span>
 </button>
