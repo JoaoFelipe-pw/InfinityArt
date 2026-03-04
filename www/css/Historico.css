@@ -1,0 +1,27 @@
+﻿:root {
+  --primary-color: #0047ab;
+  --secondary-color: #ff8c00;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+.ios-blur {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+body {
+  min-height: max(884px, 100dvh);
+}
+
+body {
+  min-height: max(884px, 100dvh);
+}

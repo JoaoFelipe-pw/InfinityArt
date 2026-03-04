@@ -1,0 +1,29 @@
+﻿:root {
+  --brand-orange: #ff8c00;
+  --brand-blue-deep: #0a1f44;
+}
+body {
+  font-family: "Inter", sans-serif;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+.step-completed .material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 1,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+.ios-tab-bar {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+body {
+  min-height: max(884px, 100dvh);
+}

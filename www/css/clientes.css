@@ -1,0 +1,11 @@
+﻿body {
+  font-family: "Inter", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+.ios-status-bar {
+  height: 44px;
+}
+
+body {
+  min-height: max(884px, 100dvh);
+}

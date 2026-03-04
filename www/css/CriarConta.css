@@ -1,21 +1,19 @@
 ﻿@layer base {
   body {
-    background-color: #020817;
+    @apply bg-background-dark font-display text-white min-h-screen flex flex-col;
     background: radial-gradient(circle at center, #0a1e3d 0%, #020817 100%);
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    font-family: Inter, sans-serif;
-    min-height: 100vh;
   }
 }
-
 .material-symbols-outlined {
   font-variation-settings:
     "FILL" 0,
     "wght" 400,
     "GRAD" 0,
     "opsz" 24;
+}
+
+body {
+  min-height: max(844px, 100dvh);
 }
 
 body {

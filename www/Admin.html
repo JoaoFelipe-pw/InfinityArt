@@ -1,113 +1,151 @@
-<!DOCTYPE html>
+﻿<!doctype html>
 
-<html class="dark" lang="pt-br"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#137fec",
-                        "accent-orange": "#f97316",
-                        "background-light": "#f6f7f8",
-                        "background-dark": "#101922",
-                        "surface-dark": "#1a2530",
-                        "border-dark": "#2d3a4b",
-                    },
-                    fontFamily: {
-                        "display": ["Inter"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                },
+<html class="dark" lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#137fec",
+              "accent-orange": "#f97316",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+              "surface-dark": "#1a2530",
+              "border-dark": "#2d3a4b",
             },
-        }
+            fontFamily: {
+              display: ["Inter"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
     </script>
-<style>
-        body {
-            -webkit-tap-highlight-color: transparent;
-        }
-    </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
+
+    <link rel="stylesheet" href="css/Admin.css" />
   </head>
-<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
-<!-- iOS Status Bar Spacer -->
-<div class="h-12 w-full bg-background-light dark:bg-background-dark sticky top-0 z-50 flex items-center px-6 justify-between border-b border-primary/10">
-    <div class="flex items-center gap-2">
+  <body
+    class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen"
+  >
+    <!-- iOS Status Bar Spacer -->
+    <div
+      class="h-12 w-full bg-background-light dark:bg-background-dark sticky top-0 z-50 flex items-center px-6 justify-between border-b border-primary/10"
+    >
+      <div class="flex items-center gap-2">
         <span class="font-bold text-lg tracking-tight">InfinityArt</span>
-        <span class="bg-primary/20 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider border border-primary/30">Admin</span>
+        <span
+          class="bg-primary/20 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider border border-primary/30"
+          >Admin</span
+        >
+      </div>
     </div>
-    
-    </div>
-</div>
-<!-- Main Content -->
-<main class="p-4 pb-24 space-y-6">
-<!-- Welcome Header -->
-<div>
-    <h1 class="text-2xl font-bold">Painel de Administração</h1>
-    <p class="text-slate-500 text-sm">Bem-vindo de volta, Administrador</p>
-</div>
-<!-- Summary Tiles (KPIs) -->
-<div class="grid grid-cols-2 gap-4">
-<div class="col-span-2 bg-primary dark:bg-primary rounded-xl p-5 shadow-lg shadow-primary/20 flex justify-between items-center text-white">
-    <div>
-        <p class="text-white/80 text-xs font-medium uppercase tracking-wider">Total de Vendas</p>
-        <h2 class="text-3xl font-bold mt-1">€ 12.450,00</h2>
-    </div>
-    <div class="bg-white/20 p-3 rounded-lg">
-        <span class="material-icons-round text-3xl">payments</span>
-    </div>
-</div>
-<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-border-dark shadow-sm">
-    <div class="flex items-center justify-between mb-2">
-        <span class="material-icons-round text-accent-orange bg-accent-orange/10 p-2 rounded-lg text-xl">shopping_basket</span>
-    </div>
-    <p class="text-slate-500 text-[11px] font-semibold uppercase tracking-wider">Novas Encomendas</p>
-    <h3 class="text-2xl font-bold">14</h3>
-</div>
-<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-border-dark shadow-sm">
-    <div class="flex items-center justify-between mb-2">
-        <span class="material-icons-round text-primary bg-primary/10 p-2 rounded-lg text-xl">inventory_2</span>
-    </div>
-    <p class="text-slate-500 text-[11px] font-semibold uppercase tracking-wider">Produtos Vendidos</p>
-    <h3 class="text-2xl font-bold">186</h3>
-</div>
-</div>
-<!-- Pending Orders List -->
-    <div class="space-y-4">
+    <!-- Main Content -->
+    <main class="p-4 pb-24 space-y-6">
+      <!-- Welcome Header -->
+      <div>
+        <h1 class="text-2xl font-bold">Painel de Administração</h1>
+        <p class="text-slate-500 text-sm">Bem-vindo de volta, Administrador</p>
+      </div>
+      <!-- Summary Tiles (KPIs) -->
+      <div class="grid grid-cols-2 gap-4">
+        <div
+          class="col-span-2 bg-primary dark:bg-primary rounded-xl p-5 shadow-lg shadow-primary/20 flex justify-between items-center text-white"
+        >
+          <div>
+            <p
+              class="text-white/80 text-xs font-medium uppercase tracking-wider"
+            >
+              Total de Vendas
+            </p>
+            <h2 class="text-3xl font-bold mt-1">€ 12.450,00</h2>
+          </div>
+          <div class="bg-white/20 p-3 rounded-lg">
+            <span class="material-icons-round text-3xl">payments</span>
+          </div>
+        </div>
+        <div
+          class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-border-dark shadow-sm"
+        >
+          <div class="flex items-center justify-between mb-2">
+            <span
+              class="material-icons-round text-accent-orange bg-accent-orange/10 p-2 rounded-lg text-xl"
+              >shopping_basket</span
+            >
+          </div>
+          <p
+            class="text-slate-500 text-[11px] font-semibold uppercase tracking-wider"
+          >
+            Novas Encomendas
+          </p>
+          <h3 class="text-2xl font-bold">14</h3>
+        </div>
+        <div
+          class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-border-dark shadow-sm"
+        >
+          <div class="flex items-center justify-between mb-2">
+            <span
+              class="material-icons-round text-primary bg-primary/10 p-2 rounded-lg text-xl"
+              >inventory_2</span
+            >
+          </div>
+          <p
+            class="text-slate-500 text-[11px] font-semibold uppercase tracking-wider"
+          >
+            Produtos Vendidos
+          </p>
+          <h3 class="text-2xl font-bold">186</h3>
+        </div>
+      </div>
+      <!-- Pending Orders List -->
+      <div class="space-y-4">
         <div class="flex items-center justify-between">
-            <h2 class="text-lg font-bold">Clientes</h2>
-
+          <h2 class="text-lg font-bold">Clientes</h2>
         </div>
-        <div class="bg-white dark:bg-surface-dark p-6 rounded-xl border border-slate-200 dark:border-border-dark shadow-sm text-center">
-            <p class="text-slate-500 text-sm mb-4">Gerir todos os clientes registados</p>
-            <a href="clientes.html" 
-            class="inline-block bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-lg transition-all active:scale-95 shadow-md shadow-primary/20">
-                Ver todos os clientes
-            </a>
+        <div
+          class="bg-white dark:bg-surface-dark p-6 rounded-xl border border-slate-200 dark:border-border-dark shadow-sm text-center"
+        >
+          <p class="text-slate-500 text-sm mb-4">
+            Gerir todos os clientes registados
+          </p>
+          <a
+            href="clientes.html"
+            class="inline-block bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-lg transition-all active:scale-95 shadow-md shadow-primary/20"
+          >
+            Ver todos os clientes
+          </a>
         </div>
-    </div>
-
-</main>
-<!-- iOS Tab Bar -->
-<nav class="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-background-dark/80 backdrop-blur-xl border-t border-slate-200 dark:border-border-dark px-6 py-2 pb-8 flex justify-center items-center z-50">
-    <a href="Menu.html" class="flex flex-col items-center gap-1 text-primary">
+      </div>
+    </main>
+    <!-- iOS Tab Bar -->
+    <nav
+      class="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-background-dark/80 backdrop-blur-xl border-t border-slate-200 dark:border-border-dark px-6 py-2 pb-8 flex justify-center items-center z-50"
+    >
+      <a href="Menu.html" class="flex flex-col items-center gap-1 text-primary">
         <span class="material-icons-round">dashboard</span>
         <span class="text-[10px] font-bold">Início</span>
-    </a>
-</nav>
-</body></html>
+      </a>
+    </nav>
+  </body>
+</html>

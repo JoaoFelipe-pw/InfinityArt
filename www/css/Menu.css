@@ -1,0 +1,19 @@
+﻿body {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.safe-area-top {
+  padding-top: env(safe-area-inset-top);
+}
+.glass-card {
+  background: rgba(31, 41, 55, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(236, 127, 19, 0.1);
+}
+
+body {
+  min-height: max(884px, 100dvh);
+}

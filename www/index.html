@@ -1,120 +1,156 @@
-<!DOCTYPE html>
-<html class="dark" lang="pt-PT"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Iniciar Sessão InfinityArt</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#0056b3",
-                        "accent": "#ff8c00",
-                        "cosmic-blue": "#0a1128",
-                        "deep-space": "#001f3f",
-                        "background-dark": "#020817",
-                    },
-                    fontFamily: {
-                        "display": ["Inter", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.5rem",
-                        "lg": "1rem",
-                        "xl": "1.5rem",
-                        "full": "9999px"
-                    },
-                },
+﻿<!doctype html>
+<html class="dark" lang="pt-PT">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iniciar Sessão InfinityArt</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0056b3",
+              accent: "#ff8c00",
+              "cosmic-blue": "#0a1128",
+              "deep-space": "#001f3f",
+              "background-dark": "#020817",
             },
-        }
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              lg: "1rem",
+              xl: "1.5rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
     </script>
-<style type="text/tailwindcss">
-        @layer base {
-            body {
-                background-color: #020817;
-                font-family: Inter, sans-serif;
-                color: #ffffff;
-                min-height: 100vh;
-                display: flex;
-                flex-direction: column;
-                background: radial-gradient(circle at center, #0a1e3d 0%, #020817 100%);
-            }
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-    </style>
-<style>
-        body {
-            min-height: max(844px, 100dvh);
-        }
-    </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
+
+    <link rel="stylesheet" href="css/index.css" />
   </head>
-<body class="min-h-screen flex flex-col">
-<div class="h-12 bg-transparent"></div>
-<div class="flex flex-col items-center px-6 pt-10 pb-6">
-<div class="relative mb-6">
-<div class="w-32 h-32 rounded-full border-4 border-accent p-1 bg-deep-space shadow-[0_0_20px_rgba(255,140,0,0.3)] flex items-center justify-center overflow-hidden">
-<div class="w-full h-full rounded-full flex items-center justify-center bg-gradient-to-br from-primary to-deep-space">
-<span class="material-symbols-outlined text-white text-6xl"><img src="img/images.jpg"></span>
-</div>
-</div>
-<div class="absolute inset-0 rounded-full blur-2xl bg-accent/20 -z-10"></div>
-</div>
-<h1 class="text-white text-3xl font-bold leading-tight tracking-tight text-center">
-            Gráfica InfinityArt
-        </h1>
-<p class="text-accent text-xs font-bold uppercase tracking-widest mt-1">Qualidade &amp; Inovação</p>
-</div>
-<div class="px-6 flex flex-col gap-6">
-<div class="text-center mb-2">
-<h2 class="text-white text-xl font-semibold">Iniciar Sessão</h2>
-<p class="text-slate-400 text-sm mt-1">Faça login para gerir as suas encomendas</p>
-</div>
-<div class="flex flex-col gap-4">
-<div class="flex flex-col gap-2">
-<label class="text-slate-300 text-sm font-medium ml-1">E-mail</label>
-<div class="relative">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">mail</span>
-<input class="w-full bg-deep-space/50 border border-white/10 rounded-2xl h-14 pl-12 pr-4 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all" placeholder="exemplo@email.com" type="email"/>
-</div>
-</div>
-<div class="flex flex-col gap-2">
-<div class="flex justify-between items-center px-1">
-<label class="text-slate-300 text-sm font-medium">Palavra-passe</label>
-<a class="text-accent text-xs font-semibold hover:underline" href="esqueceu_senha.html">Esqueceu-se da palavra-passe?</a>
-</div>
-<div class="relative">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">lock</span>
-<input class="w-full bg-deep-space/50 border border-white/10 rounded-2xl h-14 pl-12 pr-12 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all" placeholder="••••••••"  type="password"/>
-<button class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white">
-<span class="material-symbols-outlined">visibility</span>
-</button>
-</div>
-</div>
-</div>
-<button class="w-full h-14 bg-accent text-white font-bold rounded-2xl shadow-lg shadow-accent/20 active:scale-[0.98] transition-all text-lg mt-2" onclick="window.location.href='Menu.html'">
-            Entrar
-        </button>
-<div class="flex items-center gap-4 py-2">
 
-</div>
+  <body class="min-h-screen flex flex-col">
+    <div class="h-12 bg-transparent"></div>
 
-</div>
-<div class="mt-auto pb-8 px-6 text-center">
-<p class="text-slate-400 text-sm">
-            Novo na InfinityArt? 
-            <a class="text-accent font-bold ml-1 hover:underline" href="CriarConta.html">Criar nova conta</a>
-</p>
-</div>
-<div class="h-1 w-32 bg-white/20 rounded-full mx-auto mb-2"></div>
+    <header class="flex flex-col items-center px-6 pt-10 pb-6">
+      <div class="relative mb-6">
+        <div
+          class="w-32 h-32 rounded-full border-4 border-accent p-1 bg-deep-space shadow-[0_0_20px_rgba(255,140,0,0.3)] flex items-center justify-center overflow-hidden"
+        >
+          <div
+            class="w-full h-full rounded-full flex items-center justify-center bg-gradient-to-br from-primary to-deep-space"
+          >
+            <span class="material-symbols-outlined text-white text-6xl">
+              <img src="img/images.jpg" alt="Logo InfinityArt" />
+            </span>
+          </div>
+        </div>
+        <div
+          class="absolute inset-0 rounded-full blur-2xl bg-accent/20 -z-10"
+        ></div>
+      </div>
 
-</body></html>
+      <h1
+        class="text-white text-3xl font-bold leading-tight tracking-tight text-center"
+      >
+        Gráfica InfinityArt
+      </h1>
+      <p class="text-accent text-xs font-bold uppercase tracking-widest mt-1">
+        Qualidade &amp; Inovação
+      </p>
+    </header>
+
+    <main class="px-6 flex flex-col gap-6">
+      <section class="text-center mb-2">
+        <h2 class="text-white text-xl font-semibold">Iniciar Sessão</h2>
+        <p class="text-slate-400 text-sm mt-1">
+          Faça login para gerir as suas encomendas
+        </p>
+      </section>
+
+      <section class="flex flex-col gap-4">
+        <div class="flex flex-col gap-2">
+          <label class="text-slate-300 text-sm font-medium ml-1">E-mail</label>
+          <div class="relative">
+            <span
+              class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"
+              >mail</span
+            >
+            <input
+              class="w-full bg-deep-space/50 border border-white/10 rounded-2xl h-14 pl-12 pr-4 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all"
+              type="email"
+              placeholder="exemplo@email.com"
+            />
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <div class="flex justify-between items-center px-1">
+            <label class="text-slate-300 text-sm font-medium"
+              >Palavra-passe</label
+            >
+            <a
+              class="text-accent text-xs font-semibold hover:underline"
+              href="esqueceu_senha.html"
+            >
+              Esqueceu-se da palavra-passe?
+            </a>
+          </div>
+          <div class="relative">
+            <span
+              class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"
+              >lock</span
+            >
+            <input
+              class="w-full bg-deep-space/50 border border-white/10 rounded-2xl h-14 pl-12 pr-12 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all"
+              type="password"
+              placeholder="••••••••"
+            />
+            <button
+              class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white"
+              type="button"
+            >
+              <span class="material-symbols-outlined">visibility</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <button
+        class="w-full h-14 bg-accent text-white font-bold rounded-2xl shadow-lg shadow-accent/20 active:scale-[0.98] transition-all text-lg mt-2"
+        onclick="window.location.href = 'Menu.html'"
+        type="button"
+      >
+        Entrar
+      </button>
+    </main>
+
+    <footer class="mt-auto pb-8 px-6 text-center">
+      <p class="text-slate-400 text-sm">
+        Novo na InfinityArt?
+        <a
+          class="text-accent font-bold ml-1 hover:underline"
+          href="CriarConta.html"
+          >Criar nova conta</a
+        >
+      </p>
+    </footer>
+
+    <div class="h-1 w-32 bg-white/20 rounded-full mx-auto mb-2"></div>
+  </body>
+</html>
