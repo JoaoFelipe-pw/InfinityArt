@@ -19,3 +19,47 @@ body {
 body {
   min-height: max(884px, 100dvh);
 }
+
+.f7-field {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  background: rgba(9, 30, 62, 0.7);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 8px 20px rgba(1, 8, 22, 0.35);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.f7-field:focus-within {
+  border-color: rgba(255, 140, 0, 0.95);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 0 3px rgba(255, 140, 0, 0.2),
+    0 12px 28px rgba(1, 8, 22, 0.45);
+  transform: translateY(-1px);
+}
+
+.f7-field .f7-input {
+  height: 56px;
+  background: transparent;
+  border: 0;
+  border-radius: 16px;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+}
+
+.f7-field .f7-input::placeholder {
+  color: rgba(148, 163, 184, 0.85);
+}
+
+.f7-field .f7-field-icon {
+  color: rgba(148, 163, 184, 0.95);
+}
+
+.f7-field:focus-within .f7-field-icon {
+  color: rgba(255, 198, 128, 1);
+}
+
+.f7-visibility {
+  color: rgba(148, 163, 184, 0.95);
+}

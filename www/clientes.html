@@ -72,6 +72,7 @@
               >search</span
             >
             <input
+              id="clientes-search"
               class="w-full h-full rounded-xl border-none bg-slate-100 dark:bg-accent-dark pl-12 pr-4 text-base placeholder:text-slate-400 focus:ring-2 focus:ring-primary focus:outline-none"
               placeholder="Buscar por nome ou e-mail"
               type="text"
@@ -91,171 +92,22 @@
       <main class="flex-1 px-4 py-4 space-y-3">
         <div class="flex items-center justify-between mb-2">
           <h3
+            id="clientes-count"
             class="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400"
           >
-            Resultados (67)
+            Resultados (0)
           </h3>
           <span class="material-symbols-outlined text-slate-400 text-lg"
             >sort</span
           >
         </div>
-        <!-- Customer Card 1 -->
-        <div
-          class="flex items-center gap-4 rounded-xl bg-white dark:bg-surface-dark p-4 shadow-sm border border-slate-100 dark:border-accent-dark"
+        <div id="clientes-list" class="space-y-3"></div>
+        <p
+          id="clientes-empty"
+          class="hidden rounded-xl border border-slate-200 dark:border-accent-dark bg-white dark:bg-surface-dark p-4 text-sm text-slate-500 dark:text-slate-300"
         >
-          <div
-            class="relative size-14 shrink-0 overflow-hidden rounded-full border-2 border-secondary/20"
-          >
-            <img
-              alt="Avatar"
-              class="h-full w-full object-cover"
-              data-alt="Profile picture of a male client"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvr9oEwLt4-DQTi5tWEOk8XRD-CG8f6gmxcqtJRkMhe-gNusKVkcYKkeerVShP0grNHfRGQ3cf0j-8V5RLjvQsO-3-ImgGp2B_-EADMGA9AeVQjpgJ4BWbsdfW5zWc7L2C52o66DOTEBvD5-55qcDlAEIMNlBl3pVf9FOQtCRkkfIUb1hyvCsvcB3I7QZxvE4GMm6RZWfpUk9GWxsw0ajZdEGGwshvSwULFmeruYPDA2nbpWxdckrRFx45wFFE4sm4QMj1x4hhiSWp"
-            />
-          </div>
-          <div class="flex flex-1 flex-col">
-            <p class="font-bold text-slate-900 dark:text-slate-100">
-              Ricardo Oliveira
-            </p>
-            <p class="text-xs text-slate-500 dark:text-slate-400">
-              ricardo.design@gmail.com
-            </p>
-            <p class="mt-1 text-sm font-semibold text-secondary">
-              € 1.450,00 gastos
-            </p>
-          </div>
-          <button
-            class="rounded-lg bg-primary/10 dark:bg-primary/20 px-4 py-2 text-xs font-bold text-primary"
-          >
-            Gerir
-          </button>
-        </div>
-        <!-- Customer Card 2 -->
-        <div
-          class="flex items-center gap-4 rounded-xl bg-white dark:bg-surface-dark p-4 shadow-sm border border-slate-100 dark:border-accent-dark"
-        >
-          <div
-            class="relative size-14 shrink-0 overflow-hidden rounded-full border-2 border-secondary/20"
-          >
-            <img
-              alt="Avatar"
-              class="h-full w-full object-cover"
-              data-alt="Profile picture of a female client"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnC-pvuTE0yEpHqzQBuqfXHuWQbnNNThsCFFEr4FsFw3F2WX05PKKB5RP-YznR9n_xX9gEBDIWx1UTOLY3GeVVYNp4a5vAnJiGwZW3TO_4EPvixPmM2NfKcD7rQsLdZrjuWjMFP7OmcYfg-SruUkVrrrMP2zSr_wy-Fs647VjYhIQ4r5WavGKAd1Ag6NSP44jl-EmUsD-ojYg1o872wFLFRBGFMxy94r96BkgF06wS4pdlRMeeniqLZar0qsQLTWSy45I6_50VNjU0"
-            />
-          </div>
-          <div class="flex flex-1 flex-col">
-            <div class="flex items-center gap-2">
-              <p class="font-bold text-slate-900 dark:text-slate-100">
-                Juliana Silva
-              </p>
-              <span class="flex size-2 rounded-full bg-green-500"></span>
-            </div>
-            <p class="text-xs text-slate-500 dark:text-slate-400">
-              ju.art@outlook.com
-            </p>
-            <p class="mt-1 text-sm font-semibold text-secondary">
-              € 3.820,50 gastos
-            </p>
-          </div>
-          <button
-            class="rounded-lg bg-primary/10 dark:bg-primary/20 px-4 py-2 text-xs font-bold text-primary"
-          >
-            Gerir
-          </button>
-        </div>
-        <!-- Customer Card 3 -->
-        <div
-          class="flex items-center gap-4 rounded-xl bg-white dark:bg-surface-dark p-4 shadow-sm border border-slate-100 dark:border-accent-dark"
-        >
-          <div
-            class="relative size-14 shrink-0 overflow-hidden rounded-full border-2 border-secondary/20"
-          >
-            <img
-              alt="Avatar"
-              class="h-full w-full object-cover"
-              data-alt="Profile picture of a male young professional"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAz5sfZq-mEGAVo706Fo2waketb06WsHGmz4RQ19El69OMoi9MDgMc1q4M12PNI-nFgnN4T0QDycSBXGCdTU2Mo2cp_zFwktgQIVCN0SbbAhgP5-8X0EoCRF8j1xmOQ9rvRWx0q1dZEDRmBs_yzKb61lA7QSt7FumJonb5wD0_Uh3L9dVgWi2YQ_Q3HqdgI1XluP3Ar552HaFhtx74PFdiEN3Wudj3j7tAkxlQS5HyIuoNrTltHu2QODtj_CaWWlo8ZQnm5D9dGbwen"
-            />
-          </div>
-          <div class="flex flex-1 flex-col">
-            <p class="font-bold text-slate-900 dark:text-slate-100">
-              Marcos Vinícius
-            </p>
-            <p class="text-xs text-slate-500 dark:text-slate-400">
-              mv.prints@infinity.art
-            </p>
-            <p class="mt-1 text-sm font-semibold text-secondary">
-              € 890,00 gastos
-            </p>
-          </div>
-          <button
-            class="rounded-lg bg-primary/10 dark:bg-primary/20 px-4 py-2 text-xs font-bold text-primary"
-          >
-            Gerir
-          </button>
-        </div>
-        <!-- Customer Card 4 -->
-        <div
-          class="flex items-center gap-4 rounded-xl bg-white dark:bg-surface-dark p-4 shadow-sm border border-slate-100 dark:border-accent-dark opacity-60"
-        >
-          <div
-            class="relative size-14 shrink-0 overflow-hidden rounded-full border-2 border-slate-300 dark:border-slate-600 grayscale"
-          >
-            <img
-              alt="Avatar"
-              class="h-full w-full object-cover"
-              data-alt="Profile picture of an inactive client"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFAJgdS-lj7toHKSIXX8kbj7aF8TYDDCqtovYvlag6eb6-LYewX2Wy87MnB9DiKmzdO5mVwaOgHZrMQc7X7p1tmBjBXCOe-X5FAO1Yl0pnhhsKtSqCw9pKZ8GzF9ymm8Nfv2Y-KjHznYy9VZdXUNGvvRzHLil5NGO2s16C97dFYOogck6_zw5BqzcQQtiyhJe5f5uv-uR0BXoMKM-NWcNf4WLJdoOmXmd7zkTK7pgglr07VEX9yuXtXh5roG0DKy8upY4Gim_SqhpS"
-            />
-          </div>
-          <div class="flex flex-1 flex-col">
-            <p class="font-bold text-slate-900 dark:text-slate-100">
-              Ana Clara (Inativa)
-            </p>
-            <p class="text-xs text-slate-500 dark:text-slate-400">
-              anac@empresa.com.br
-            </p>
-            <p class="mt-1 text-sm font-semibold text-secondary">
-              € 0,00 gastos
-            </p>
-          </div>
-          <button
-            class="rounded-lg bg-primary/10 dark:bg-primary/20 px-4 py-2 text-xs font-bold text-primary"
-          >
-            Gerir
-          </button>
-        </div>
-        <!-- Customer Card 5 -->
-        <div
-          class="flex items-center gap-4 rounded-xl bg-white dark:bg-surface-dark p-4 shadow-sm border border-slate-100 dark:border-accent-dark"
-        >
-          <div
-            class="relative size-14 shrink-0 overflow-hidden rounded-full border-2 border-primary/20"
-          >
-            <div
-              class="flex h-full w-full items-center justify-center bg-primary/10 text-primary font-bold text-lg"
-            >
-              CP
-            </div>
-          </div>
-          <div class="flex flex-1 flex-col">
-            <p class="font-bold text-slate-900 dark:text-slate-100">
-              Carlos Pereira
-            </p>
-            <p class="text-xs text-slate-500 dark:text-slate-400">
-              carlos.p@hotmail.com
-            </p>
-            <p class="mt-1 text-sm font-semibold text-secondary">
-              € 250,00 gastos
-            </p>
-          </div>
-          <button
-            class="rounded-lg bg-primary/10 dark:bg-primary/20 px-4 py-2 text-xs font-bold text-primary"
-          >
-            Gerir
-          </button>
-        </div>
+          Nenhuma conta encontrada.
+        </p>
       </main>
       <!-- Spacer for nav bar -->
       <div class="h-24"></div>
@@ -286,5 +138,10 @@
       </nav>
     </div>
     <script defer src="js/mobile-flow.js"></script>
+    <script defer src="js/auth-guard.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore-compat.js"></script>
+    <script defer src="js/firebase-init.js"></script>
+    <script defer src="js/clientes-list.js"></script>
   </body>
 </html>

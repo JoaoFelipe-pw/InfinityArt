@@ -80,13 +80,13 @@
       <div class="flex flex-col gap-4">
         <div class="flex flex-col gap-2">
           <label class="text-slate-300 text-sm font-medium ml-1">Nome</label>
-          <div class="relative">
+          <div class="relative f7-field">
             <span
-              class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"
+              class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 f7-field-icon"
               >person</span
             >
             <input
-              class="w-full bg-deep-space/50 border border-white/10 rounded-2xl h-14 pl-12 pr-4 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all"
+              class="w-full bg-deep-space/50 border border-white/10 rounded-2xl h-14 pl-12 pr-4 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all f7-input"
               placeholder="Nome Completo"
               type="text"
             />
@@ -94,13 +94,13 @@
         </div>
         <div class="flex flex-col gap-2">
           <label class="text-slate-300 text-sm font-medium ml-1">E-mail</label>
-          <div class="relative">
+          <div class="relative f7-field">
             <span
-              class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"
+              class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 f7-field-icon"
               >mail</span
             >
             <input
-              class="w-full bg-deep-space/50 border border-white/10 rounded-2xl h-14 pl-12 pr-4 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all"
+              class="w-full bg-deep-space/50 border border-white/10 rounded-2xl h-14 pl-12 pr-4 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all f7-input"
               placeholder="exemplo@email.com"
               type="email"
             />
@@ -117,18 +117,18 @@
               >Esqueceu-se da palavra-passe?</a
             >
           </div>
-          <div class="relative">
+          <div class="relative f7-field">
             <span
-              class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"
+              class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 f7-field-icon"
               >lock</span
             >
             <input
-              class="w-full bg-deep-space/50 border border-white/10 rounded-2xl h-14 pl-12 pr-12 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all"
+              class="w-full bg-deep-space/50 border border-white/10 rounded-2xl h-14 pl-12 pr-12 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all f7-input"
               placeholder="••••••••"
               type="password"
             />
             <button
-              class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white"
+              class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white f7-visibility"
             >
               <span class="material-symbols-outlined">visibility</span>
             </button>
@@ -137,7 +137,7 @@
       </div>
       <button
         class="w-full h-14 bg-accent text-white font-bold rounded-2xl shadow-lg shadow-accent/20 active:scale-[0.98] transition-all text-lg mt-2"
-        onclick="window.location.href = 'Menu.html'"
+        type="button"
       >
         Criar Conta
       </button>
@@ -153,5 +153,9 @@
     </div>
     <div class="h-1 w-32 bg-white/20 rounded-full mx-auto mb-2"></div>
     <script defer src="js/mobile-flow.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore-compat.js"></script>
+    <script defer src="js/firebase-init.js"></script>
+    <script defer src="js/auth-ui.js"></script>
   </body>
 </html>
