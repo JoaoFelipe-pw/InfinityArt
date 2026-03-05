@@ -1,0 +1,88 @@
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+body {
+  min-height: max(884px, 100dvh);
+}
+
+.section-title {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgb(100 116 139);
+}
+
+.dark .section-title {
+  color: rgb(148 163 184 / 0.8);
+}
+
+.product-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(226 232 240);
+  background: rgb(255 255 255);
+  padding: 0.75rem;
+}
+
+.dark .product-row {
+  border-color: rgb(255 255 255 / 0.1);
+  background: #151f2b;
+}
+
+.product-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f97316;
+  background: rgb(249 115 22 / 0.1);
+  flex-shrink: 0;
+}
+
+.product-name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.15rem;
+  color: rgb(15 23 42);
+}
+
+.dark .product-name {
+  color: rgb(255 255 255);
+}
+
+.product-meta {
+  font-size: 0.75rem;
+  color: rgb(100 116 139);
+}
+
+.dark .product-meta {
+  color: rgb(148 163 184);
+}
+
+.icon-button {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(148 163 184);
+}
+
+.icon-button:hover {
+  color: #f97316;
+}

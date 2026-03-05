@@ -41,6 +41,7 @@
     </script>
 
     <link rel="stylesheet" href="css/Perfil.css" />
+    <link rel="stylesheet" href="css/mobile-flow.css" />
   </head>
   <body
     class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen"
@@ -54,7 +55,7 @@
         <div
           class="text-slate-900 dark:text-white flex size-12 shrink-0 items-center"
         >
-          <span class="material-symbols-outlined cursor-pointer"
+          <span class="material-symbols-outlined cursor-pointer app-back-button"
             >arrow_back_ios</span
           >
         </div>
@@ -153,7 +154,8 @@
                 Consumo total acumulado este ano
               </p>
               <button
-                class="flex min-w-[90px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-accent text-white text-sm font-bold leading-normal shadow-[0_4px_12px_rgba(249,115,22,0.4)] hover:brightness-110 transition-all"
+                class="flex min-w-[90px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-accent text-white text-sm font-bold leading-normal shadow-[0_4px_12px_rgba(249,115,22,0.4)] hover:brightness-110 transition-all app-tap"
+                data-nav-target="Historico.html"
               >
                 <span class="truncate">Faturas</span>
               </button>
@@ -170,7 +172,10 @@
             Encomendas Recentes
           </h2>
         </div>
-        <button class="text-accent text-sm font-bold uppercase tracking-wider">
+        <button
+          class="text-accent text-sm font-bold uppercase tracking-wider app-tap"
+          data-nav-target="Encomendas.html"
+        >
           Ver todas
         </button>
       </div>
@@ -241,7 +246,7 @@
       >
         <a
           href="Menu.html"
-          class="flex flex-col items-center gap-1 group cursor-pointer"
+          class="flex flex-col items-center gap-1 group cursor-pointer app-tab-link"
         >
           <span
             class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors"
@@ -255,7 +260,7 @@
 
         <a
           href="Encomendas.html"
-          class="flex flex-col items-center gap-1 group cursor-pointer"
+          class="flex flex-col items-center gap-1 group cursor-pointer app-tab-link"
         >
           <span
             class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors"
@@ -269,7 +274,7 @@
 
         <a
           href="Historico.html"
-          class="flex flex-col items-center gap-1 group cursor-pointer"
+          class="flex flex-col items-center gap-1 group cursor-pointer app-tab-link"
         >
           <span
             class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors"
@@ -283,7 +288,7 @@
 
         <a
           href="Perfil.html"
-          class="flex flex-col items-center gap-1 group cursor-pointer"
+          class="flex flex-col items-center gap-1 group cursor-pointer app-tab-link"
         >
           <span
             class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors"
@@ -296,5 +301,6 @@
         </a>
       </nav>
     </div>
+    <script defer src="js/mobile-flow.js"></script>
   </body>
 </html>
