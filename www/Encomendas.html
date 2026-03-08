@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html class="dark" lang="pt-PT">
   <head>
     <meta charset="utf-8" />
@@ -19,22 +19,13 @@
         theme: {
           extend: {
             colors: {
-              primary: "#FF8C00", // Brand Orange
-              "brand-blue": "#0A1F44", // Deep Professional Blue
-              "brand-light-blue": "#1E3A8A",
+              primary: "#FF8C00",
+              "brand-blue": "#0A1F44",
               "background-light": "#f6f7f8",
               "background-dark": "#050B14",
             },
             fontFamily: {
               display: ["Inter", "sans-serif"],
-            },
-            borderRadius: {
-              DEFAULT: "0.25rem",
-              lg: "0.5rem",
-              xl: "0.75rem",
-              "2xl": "1rem",
-              "3xl": "1.5rem",
-              full: "9999px",
             },
           },
         },
@@ -44,297 +35,59 @@
     <link rel="stylesheet" href="css/Encomendas.css" />
     <link rel="stylesheet" href="css/mobile-flow.css" />
   </head>
-  <body
-    class="bg-background-light dark:bg-background-dark text-white font-display antialiased"
-  >
+  <body class="bg-background-light dark:bg-background-dark text-white font-display antialiased">
     <div
+      data-app-shell
       class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark max-w-[480px] mx-auto shadow-2xl overflow-x-hidden pb-24"
     >
       <div
         class="flex items-center bg-background-light dark:bg-brand-blue p-4 pb-4 justify-between sticky top-0 z-20 border-b border-gray-200 dark:border-white/10"
       >
-        <div
-          class="text-gray-900 dark:text-white flex size-10 shrink-0 items-center cursor-pointer"
-        >
+        <div class="text-gray-900 dark:text-white flex size-10 shrink-0 items-center cursor-pointer">
           <span class="material-symbols-outlined">arrow_back_ios</span>
         </div>
         <div class="flex flex-col items-center flex-1">
-          <h2
-            class="text-gray-900 dark:text-white text-base font-bold leading-tight tracking-tight uppercase"
-          >
-            Seguir Encomenda
-          </h2>
-          <p
-            class="text-[10px] text-primary font-bold tracking-[0.2em] leading-none mt-1"
-          >
-            INFINITY ART
-          </p>
+          <h2 class="text-gray-900 dark:text-white text-base font-bold leading-tight tracking-tight uppercase">Seguir Encomenda</h2>
+          <p class="text-[10px] text-primary font-bold tracking-[0.2em] leading-none mt-1">INFINITY ART</p>
         </div>
       </div>
-      <div class="h-6 bg-transparent"></div>
-      <div class="px-4">
-        <div
-          class="flex items-stretch justify-between gap-4 rounded-2xl bg-white dark:bg-brand-blue/40 p-5 shadow-lg border border-gray-100 dark:border-white/5 backdrop-blur-sm"
-        >
-          <div class="flex flex-col gap-1.5 flex-[2_2_0px]">
-            <div class="flex items-center gap-2 mb-1">
-              <span
-                class="text-primary text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full bg-primary/10"
-                >Grafica InfinityArt</span
-              >
-            </div>
-            <p
-              class="text-gray-900 dark:text-white text-lg font-extrabold leading-tight"
-            >
-              Encomenda #GI-98721
-            </p>
-            <p
-              class="text-gray-500 dark:text-gray-400 text-sm font-medium leading-normal"
-            >
-              Poster Personalizado - A3 Brilho
-            </p>
-            <div class="mt-2 flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-primary"></span>
-              <span class="text-xs text-primary font-bold"
-                >Em processamento no centro</span
-              >
-            </div>
-          </div>
-          <div
-            class="w-24 h-24 bg-center bg-no-repeat bg-cover rounded-xl shadow-inner border-2 border-white/10"
-            style="
-              background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDkOnqtDgikstEcCzaH9esqM2gFiLTeRnnFsqocvZ0VFTI5m_1pX-gbQWBcCoyyj9fEjJ6a-G1dRGUi2iA_nk2jr69qO6Hp6bA9eNWmeSkMNPTnB98xtoXlcqmB3YiRosLz0zMBvIMkBI9DW-xGgaWWwdLFUdbMQSqR22dnTtck-yrs97ycBzvlkKtdYC0h6HtDrc252WpdtPnepiO89SE5fI_9CAYpnjp2TaLRilvUPrKIzGdKqSYSGoiSN_Ju0CFXG4N5xOGktyKO&quot;);
-            "
-          ></div>
-        </div>
-      </div>
-      <div class="mt-6">
-        <h3
-          class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-tight px-4 flex items-center gap-2"
-        >
-          <span class="w-1.5 h-6 bg-primary rounded-full"></span>
-          Estado do Envio
-        </h3>
-      </div>
-      <div class="px-4 mt-4">
-        <div
-          class="grid grid-cols-[48px_1fr] gap-x-2 bg-white dark:bg-brand-blue/20 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-white/5"
-        >
-          <div class="flex flex-col items-center gap-1 step-completed">
-            <div
-              class="text-primary bg-primary/10 p-1.5 rounded-full ring-4 ring-primary/5"
-            >
-              <span class="material-symbols-outlined text-xl"
-                >check_circle</span
-              >
-            </div>
-            <div class="w-[3px] bg-primary h-12 rounded-full opacity-60"></div>
-          </div>
-          <div class="flex flex-1 flex-col pb-8">
-            <p
-              class="text-gray-900 dark:text-white text-base font-bold leading-normal"
-            >
-              Encomenda Efetuada
-            </p>
-            <p class="text-gray-500 dark:text-gray-400 text-sm font-normal">
-              24 Out, 10:00
-            </p>
-          </div>
-          <div class="flex flex-col items-center gap-1">
-            <div
-              class="text-primary bg-primary p-1.5 rounded-full shadow-[0_0_15px_rgba(255,140,0,0.4)]"
-            >
-              <span class="material-symbols-outlined text-xl text-white"
-                >print</span
-              >
-            </div>
-            <div
-              class="w-[3px] bg-gray-200 dark:bg-white/10 h-12 rounded-full mt-1"
-            ></div>
-          </div>
-          <div class="flex flex-1 flex-col pb-8">
-            <div class="flex items-center gap-2">
-              <p
-                class="text-primary text-base font-black leading-normal uppercase"
-              >
-                Em Produção
-              </p>
-              <span
-                class="px-1.5 py-0.5 rounded bg-primary/10 text-[10px] font-bold text-primary tracking-tighter"
-                >AGORA</span
-              >
-            </div>
-            <p class="text-gray-500 dark:text-gray-400 text-sm font-normal">
-              Iniciado em 25 Out, 14:30
-            </p>
-          </div>
-          <div class="flex flex-col items-center gap-1">
-            <div class="text-gray-300 dark:text-white/20 p-1.5">
-              <span class="material-symbols-outlined text-xl"
-                >local_shipping</span
-              >
-            </div>
-            <div
-              class="w-[3px] bg-gray-200 dark:bg-white/10 h-12 rounded-full mt-1"
-            ></div>
-          </div>
-          <div class="flex flex-1 flex-col pb-8">
-            <p
-              class="text-gray-400 dark:text-white/30 text-base font-semibold leading-normal"
-            >
-              Em Transporte
-            </p>
-            <p class="text-gray-400 dark:text-white/20 text-sm font-normal">
-              Data prevista: 27 Out
-            </p>
-          </div>
-          <div class="flex flex-col items-center gap-1">
-            <div class="text-gray-300 dark:text-white/20 p-1.5">
-              <span class="material-symbols-outlined text-xl">package_2</span>
-            </div>
-          </div>
-          <div class="flex flex-1 flex-col">
-            <p
-              class="text-gray-400 dark:text-white/30 text-base font-semibold leading-normal"
-            >
-              Entregue
-            </p>
-            <p class="text-gray-400 dark:text-white/20 text-sm font-normal">
-              Estimado para 28 Out
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="p-4 mt-4">
-        <div
-          class="flex flex-col items-start justify-between gap-4 rounded-2xl border border-primary/20 bg-gradient-to-br from-brand-blue to-black p-6 shadow-xl relative overflow-hidden"
-        >
-          <div
-            class="absolute -right-10 -top-10 w-32 h-32 bg-primary/20 blur-[60px]"
-          ></div>
-          <div class="flex flex-col gap-1 relative z-10">
-            <p
-              class="text-primary text-[10px] font-black uppercase tracking-widest"
-            >
-              DATA PREVISTA
-            </p>
-            <p class="text-white text-xl font-extrabold leading-tight">
-              Sexta-feira, 27 de Outubro
-            </p>
-            <p
-              class="text-gray-400 text-sm font-medium mt-1 flex items-center gap-2"
-            >
-              <span class="material-symbols-outlined text-sm"
-                >local_shipping</span
-              >
-              Envio Normal via DHL
-            </p>
-          </div>
-          <button
-            class="relative z-10 flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-primary text-white text-sm font-black uppercase tracking-widest shadow-lg shadow-primary/30 active:scale-95 transition-all"
-          >
-            <span>Detalhes da Encomenda</span>
-          </button>
-        </div>
-      </div>
-      <div class="px-4 py-2">
-        <div
-          class="rounded-2xl bg-white dark:bg-brand-blue/30 p-5 shadow-sm border border-gray-100 dark:border-white/5"
-        >
-          <div class="flex items-center gap-3 mb-3">
-            <div class="p-2 bg-primary/10 rounded-lg">
-              <span class="material-symbols-outlined text-primary text-lg"
-                >location_on</span
-              >
-            </div>
-            <p
-              class="text-gray-900 dark:text-white text-sm font-black uppercase tracking-wider"
-            >
-              Morada de Entrega
-            </p>
-          </div>
-          <p
-            class="text-gray-600 dark:text-gray-400 text-sm font-medium leading-relaxed pl-12 border-l-2 border-gray-100 dark:border-white/5"
-          >
-            Avenida da Liberdade, 123<br />
-            1250-001 Lisboa, Portugal
-          </p>
-        </div>
-      </div>
-      <div class="p-6 mb-12">
-        <div
-          class="flex items-center justify-center gap-2.5 text-gray-500 dark:text-gray-400 text-sm font-bold cursor-pointer py-3 px-4 rounded-xl hover:bg-white dark:hover:bg-white/5 transition-all group"
-        >
-          <span
-            class="material-symbols-outlined text-lg group-hover:text-primary transition-colors"
-            >contact_support</span
-          >
-          <span class="group-hover:text-white transition-colors"
-            >Precisa de ajuda? Contacte o Suporte</span
-          >
-        </div>
-        <nav
-          class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] bg-white/80 dark:bg-brand-blue/90 ios-tab-bar border-t border-gray-200 dark:border-white/10 px-6 py-3 flex items-center justify-between z-30"
-        >
-          <a
-            href="Menu.html"
-            class="flex flex-col items-center gap-1 group cursor-pointer"
-          >
-            <span
-              class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors"
-              >home</span
-            >
-            <span
-              class="text-[10px] font-bold text-gray-400 group-hover:text-primary uppercase tracking-tighter"
-              >Início</span
-            >
-          </a>
 
-          <a
-            href="Encomendas.html"
-            class="flex flex-col items-center gap-1 group cursor-pointer"
-          >
-            <span
-              class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors"
-              >shopping_bag</span
-            >
-            <span
-              class="text-[10px] font-bold text-gray-400 group-hover:text-primary uppercase tracking-tighter"
-              >Encomendas</span
-            >
-          </a>
-
-          <a
-            href="Historico.html"
-            class="flex flex-col items-center gap-1 group cursor-pointer"
-          >
-            <span
-              class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors"
-              >history</span
-            >
-            <span
-              class="text-[10px] font-bold text-gray-400 group-hover:text-primary uppercase tracking-tighter"
-              >Histórico</span
-            >
-          </a>
-
-          <a
-            href="Perfil.html"
-            class="flex flex-col items-center gap-1 group cursor-pointer"
-          >
-            <span
-              class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors"
-              >person</span
-            >
-            <span
-              class="text-[10px] font-bold text-gray-400 group-hover:text-primary uppercase tracking-tighter"
-              >Perfil</span
-            >
-          </a>
-        </nav>
-      </div>
+      <main class="px-4 py-5">
+        <div class="rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-brand-blue/30 p-4 text-sm text-gray-600 dark:text-gray-300">
+          A carregar encomendas...
+        </div>
+      </main>
     </div>
+
+    <nav
+      class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] bg-white/80 dark:bg-brand-blue/90 ios-tab-bar border-t border-gray-200 dark:border-white/10 px-6 py-3 flex items-center justify-between z-30"
+    >
+      <a href="Menu.html" class="flex flex-col items-center gap-1 group cursor-pointer">
+        <span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">home</span>
+        <span class="text-[10px] font-bold text-gray-400 group-hover:text-primary uppercase tracking-tighter">Inicio</span>
+      </a>
+
+      <a href="Encomendas.html" class="flex flex-col items-center gap-1 group cursor-pointer">
+        <span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">shopping_bag</span>
+        <span class="text-[10px] font-bold text-gray-400 group-hover:text-primary uppercase tracking-tighter">Encomendas</span>
+      </a>
+
+      <a href="Historico.html" class="flex flex-col items-center gap-1 group cursor-pointer">
+        <span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">history</span>
+        <span class="text-[10px] font-bold text-gray-400 group-hover:text-primary uppercase tracking-tighter">Historico</span>
+      </a>
+
+      <a href="Perfil.html" class="flex flex-col items-center gap-1 group cursor-pointer">
+        <span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">person</span>
+        <span class="text-[10px] font-bold text-gray-400 group-hover:text-primary uppercase tracking-tighter">Perfil</span>
+      </a>
+    </nav>
+
     <script defer src="js/mobile-flow.js"></script>
     <script defer src="js/auth-guard.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore-compat.js"></script>
+    <script defer src="js/firebase-init.js"></script>
+    <script defer src="js/customer-data.js"></script>
   </body>
 </html>

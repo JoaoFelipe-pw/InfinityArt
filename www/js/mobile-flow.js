@@ -18,9 +18,20 @@
   }
 
   function animate(shell, className, done) {
+    var synced = Array.from(document.querySelectorAll("[data-slide-sync]"));
+
     shell.classList.remove("app-page-enter", "app-page-exit-left", "app-page-exit-right");
     shell.classList.add(className);
+    synced.forEach(function (element) {
+      element.classList.remove("app-page-enter", "app-page-exit-left", "app-page-exit-right");
+      element.classList.add(className);
+    });
+
     window.setTimeout(function () {
+      shell.classList.remove(className);
+      synced.forEach(function (element) {
+        element.classList.remove(className);
+      });
       if (typeof done === "function") done();
     }, TRANSITION_MS);
   }

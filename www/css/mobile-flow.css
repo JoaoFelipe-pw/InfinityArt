@@ -13,8 +13,14 @@ body {
 }
 
 .app-shell {
-  transform: translate3d(0, 0, 0);
-  will-change: transform, opacity, filter;
+  will-change: opacity, filter;
+}
+
+nav.fixed.bottom-0 {
+  position: fixed !important;
+  bottom: 0 !important;
+  z-index: 60 !important;
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
 }
 
 .app-page-enter {

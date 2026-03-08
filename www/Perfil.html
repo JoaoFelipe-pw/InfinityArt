@@ -78,11 +78,22 @@
           <div class="flex gap-4 flex-col items-center relative">
             <div class="relative p-1 rounded-full border-2 border-accent">
               <div
+                id="profile-avatar"
                 class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-24 w-24"
                 style="
                   background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAOSIbUCijs89DhvgmnIf2xbaFg0wCGubrQSj_aABVK53GNfy4lXZncW6MNMbYkdwUezHLxdgDzGmob_XT8aNHdvw-oOhq-QmbTP7_d2rn4i5CoAvSCJ3piRAOFvYns96-WAONSRpePlNOdTNikp5MUya2NoETl-rHeD3KcW6HCbDY5a0eTJMxsau7saC1MvwMK9hp2oNzMbmlzSdLYfexIDfVpb4xqg5hq32NhKbz07WOh3L3UrR31KWzi9hvxnuswnt_Pa4NJVyAn&quot;);
                 "
               ></div>
+              <input id="profile-avatar-input" type="file" accept="image/*" class="hidden" />
+              <button
+                id="profile-avatar-trigger"
+                type="button"
+                class="absolute -bottom-1 -left-1 bg-slate-900/90 text-white rounded-full p-1.5 border-2 border-background-dark"
+                aria-label="Alterar foto de perfil"
+                title="Alterar foto de perfil"
+              >
+                <span class="material-symbols-outlined text-[15px]">photo_camera</span>
+              </button>
               <div
                 class="absolute bottom-1 right-1 bg-accent rounded-full p-1 border-2 border-background-dark"
               >
@@ -96,18 +107,18 @@
                 id="profile-user-name"
                 class="text-slate-900 dark:text-white text-[24px] font-bold leading-tight tracking-[-0.015em] text-center"
               >
-                João Silva
+                -
               </p>
               <p
                 id="profile-user-email"
                 class="text-accent text-sm font-semibold leading-normal text-center"
               >
-                joao.silva@exemplo.pt
+                -
               </p>
               <p
                 class="text-slate-400 dark:text-[#92adc9]/60 text-[11px] font-medium leading-normal text-center mt-1 uppercase tracking-widest"
               >
-                Membro Diamante • desde 2023
+                Cliente InfinityArt
               </p>
             </div>
           </div>
@@ -144,9 +155,10 @@
             </p>
             <div class="flex items-baseline gap-1">
               <p
+                id="profile-total-gasto"
                 class="text-slate-900 dark:text-white text-4xl font-black leading-tight tracking-tighter"
               >
-                €1.240,00
+                €0,00
               </p>
             </div>
             <div class="flex items-center gap-3 justify-between mt-3">
@@ -181,66 +193,7 @@
           Ver todas
         </button>
       </div>
-      <div class="flex flex-col px-4 gap-3">
-        <div
-          class="flex items-center gap-4 bg-white dark:bg-[#151f2b] hover:bg-slate-50 dark:hover:bg-white/5 rounded-2xl px-4 min-h-[80px] py-3 justify-between transition-all border border-slate-100 dark:border-white/5 shadow-sm"
-        >
-          <div class="flex items-center gap-4">
-            <div
-              class="text-accent flex items-center justify-center rounded-xl bg-accent/10 shrink-0 size-12"
-            >
-              <span class="material-symbols-outlined">print</span>
-            </div>
-            <div class="flex flex-col justify-center">
-              <p
-                class="text-slate-900 dark:text-white text-base font-bold leading-normal"
-              >
-                #88291
-              </p>
-              <p
-                class="text-slate-500 dark:text-[#92adc9] text-xs font-medium leading-normal"
-              >
-                Lona Publicitária - 60x90cm
-              </p>
-            </div>
-          </div>
-          <div class="flex flex-col items-end gap-1">
-            <span
-              class="px-2 py-1 rounded bg-[#0bda5b]/10 text-[9px] font-black text-[#0bda5b] uppercase tracking-wider border border-[#0bda5b]/20"
-              >A Imprimir</span
-            >
-          </div>
-        </div>
-        <div
-          class="flex items-center gap-4 bg-white dark:bg-[#151f2b] hover:bg-slate-50 dark:hover:bg-white/5 rounded-2xl px-4 min-h-[80px] py-3 justify-between transition-all border border-slate-100 dark:border-white/5 shadow-sm"
-        >
-          <div class="flex items-center gap-4">
-            <div
-              class="text-accent flex items-center justify-center rounded-xl bg-accent/10 shrink-0 size-12"
-            >
-              <span class="material-symbols-outlined">branding_watermark</span>
-            </div>
-            <div class="flex flex-col justify-center">
-              <p
-                class="text-slate-900 dark:text-white text-base font-bold leading-normal"
-              >
-                #88245
-              </p>
-              <p
-                class="text-slate-500 dark:text-[#92adc9] text-xs font-medium leading-normal"
-              >
-                Cartões de Visita - 500un
-              </p>
-            </div>
-          </div>
-          <div class="flex flex-col items-end gap-1">
-            <span
-              class="px-2 py-1 rounded bg-primary/10 text-[9px] font-black text-primary uppercase tracking-wider border border-primary/20"
-              >Enviado</span
-            >
-          </div>
-        </div>
-      </div>
+      <div id="profile-recent-orders" class="flex flex-col px-4 gap-3"></div>
       <div class="p-4 mt-6"></div>
       <br /><br />
       <nav
@@ -305,6 +258,11 @@
     </div>
     <script defer src="js/mobile-flow.js"></script>
     <script defer src="js/auth-guard.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-storage-compat.js"></script>
+    <script defer src="js/firebase-init.js"></script>
     <script defer src="js/profile-session.js"></script>
+    <script defer src="js/customer-data.js"></script>
   </body>
 </html>

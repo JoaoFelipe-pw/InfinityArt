@@ -80,7 +80,7 @@
             >
               Total de Vendas
             </p>
-            <h2 class="text-3xl font-bold mt-1">€ 12.450,00</h2>
+            <h2 id="admin-total-sales" class="text-3xl font-bold mt-1">€ 0,00</h2>
           </div>
           <div class="bg-white/20 p-3 rounded-lg">
             <span class="material-icons-round text-3xl">payments</span>
@@ -100,7 +100,7 @@
           >
             Novas Encomendas
           </p>
-          <h3 class="text-2xl font-bold">14</h3>
+          <h3 id="admin-pending-orders" class="text-2xl font-bold">0</h3>
         </div>
         <div
           class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-border-dark shadow-sm"
@@ -116,7 +116,7 @@
           >
             Produtos Vendidos
           </p>
-          <h3 class="text-2xl font-bold">186</h3>
+          <h3 id="admin-products-sold" class="text-2xl font-bold">0</h3>
         </div>
       </div>
       <!-- Pending Orders List -->
@@ -149,6 +149,10 @@
       </a>
     </nav>
     <script defer src="js/mobile-flow.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore-compat.js"></script>
+    <script defer src="js/firebase-init.js"></script>
+    <script defer src="js/admin-dashboard.js"></script>
     <script defer src="js/auth-guard.js"></script>
   </body>
 </html>

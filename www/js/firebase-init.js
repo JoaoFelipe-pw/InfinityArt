@@ -16,9 +16,11 @@
 
   var app = firebase.apps.length ? firebase.app() : firebase.initializeApp(firebaseConfig);
   var db = firebase.firestore(app);
+  var storage = typeof firebase.storage === "function" ? firebase.storage(app) : null;
 
   window.InfinityFirebase = {
     app: app,
     db: db,
+    storage: storage,
   };
 })();

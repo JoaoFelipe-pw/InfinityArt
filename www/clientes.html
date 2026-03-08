@@ -51,7 +51,10 @@
   <body
     class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display"
   >
-    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+    <div
+      data-app-shell
+      class="relative flex min-h-screen w-full max-w-[430px] mx-auto flex-col overflow-x-hidden border-x border-slate-200 dark:border-accent-dark pb-24"
+    >
       <!-- Header Section -->
       <header
         class="sticky top-0 z-10 bg-background-light dark:bg-background-dark border-b border-slate-200 dark:border-accent-dark px-4 pb-4"
@@ -63,6 +66,7 @@
               Clientes InfinityArt
             </h1>
           </div>
+          <div class="app-logout-slot flex items-center"></div>
         </div>
         <!-- Search Bar -->
         <div class="mt-4">
@@ -109,34 +113,30 @@
           Nenhuma conta encontrada.
         </p>
       </main>
-      <!-- Spacer for nav bar -->
-      <div class="h-24"></div>
-      <!-- Bottom Navigation Bar -->
-      <nav
-        class="fixed bottom-0 left-0 right-0 z-20 border-t border-slate-200 dark:border-accent-dark bg-white dark:bg-surface-dark px-4 pb-8 pt-3"
-      >
-        <div class="flex items-center justify-around">
-          <a
-            class="flex flex-col items-center gap-1 text-slate-400"
-            href="Menu.html"
-          >
-            <span class="material-symbols-outlined">dashboard</span>
-            <span class="text-[10px] font-medium leading-none">Início</span>
-          </a>
-          <a
-            class="flex flex-col items-center gap-1 text-primary"
-            href="clientes.html"
-          >
-            <span
-              class="material-symbols-outlined"
-              style="font-variation-settings: &quot;FILL&quot; 1"
-              >group</span
-            >
-            <span class="text-[10px] font-medium leading-none">Clientes</span>
-          </a>
-        </div>
-      </nav>
     </div>
+
+    <nav
+      class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] bg-white/90 dark:bg-surface-dark/95 backdrop-blur-xl border-t border-slate-200 dark:border-accent-dark px-8 py-3 pb-6 flex items-center justify-around z-30"
+    >
+      <a
+        class="flex flex-col items-center gap-1 text-slate-400 app-tab-link"
+        href="Menu.html"
+      >
+        <span class="material-symbols-outlined">dashboard</span>
+        <span class="text-[10px] font-medium leading-none">Início</span>
+      </a>
+      <a
+        class="flex flex-col items-center gap-1 text-primary app-tab-link is-active"
+        href="clientes.html"
+      >
+        <span
+          class="material-symbols-outlined text-primary"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >group</span
+        >
+        <span class="text-[10px] font-medium leading-none">Clientes</span>
+      </a>
+    </nav>
     <script defer src="js/mobile-flow.js"></script>
     <script defer src="js/auth-guard.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-app-compat.js"></script>

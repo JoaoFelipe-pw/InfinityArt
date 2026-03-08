@@ -115,10 +115,11 @@
               id: doc.id,
               nome: data.nome || "",
               email: data.email || "",
+              perfil: String(data.perfil || data.role || "cliente").toLowerCase(),
             };
           })
           .filter(function (cliente) {
-            return !!(cliente.nome || cliente.email);
+            return cliente.perfil !== "admin" && !!(cliente.nome || cliente.email);
           })
           .sort(function (a, b) {
             return normalize(a.nome || a.email).localeCompare(normalize(b.nome || b.email));

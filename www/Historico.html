@@ -82,6 +82,7 @@
               <span class="material-symbols-outlined text-xl">search</span>
             </div>
             <input
+              id="historico-search"
               class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-xl text-slate-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-transparent h-full placeholder:text-slate-400 dark:placeholder:text-slate-500 px-3 text-base font-normal leading-normal"
               placeholder="Pesquisar produtos..."
               value=""
@@ -91,22 +92,7 @@
       </div>
 
       <div class="px-4 pt-4 pb-2">
-        <div class="flex justify-between items-center mb-2 px-1">
-          <span
-            class="text-[10px] font-bold uppercase text-slate-400 dark:text-slate-500 tracking-wider"
-            >Produto</span
-          >
-          <div class="flex gap-12">
-            <span
-              class="text-[10px] font-bold uppercase text-slate-400 dark:text-slate-500 tracking-wider"
-              >Data</span
-            >
-            <span
-              class="text-[10px] font-bold uppercase text-slate-400 dark:text-slate-500 tracking-wider w-12 text-right"
-              >Valor</span
-            >
-          </div>
-        </div>
+        
         <h3
           class="text-slate-900 dark:text-white text-lg font-bold leading-tight flex items-center gap-2"
         >
@@ -114,116 +100,7 @@
           Todas Encomendas
         </h3>
       </div>
-      <div class="flex flex-col px-4 gap-4">
-        <div
-          class="flex items-center gap-4 bg-white dark:bg-[#1A2633] px-4 min-h-[96px] py-4 rounded-xl border border-slate-200 dark:border-slate-800/80 shadow-sm shadow-slate-200/50 dark:shadow-none active:scale-[0.98] transition-all"
-        >
-          <div class="flex items-center gap-4 flex-1">
-            <div
-              class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-16 flex items-center justify-center bg-brand-blue/5 border border-slate-100 dark:border-slate-700"
-              style="
-                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAbh-9XrG_E6eTNNpolt9iLTyG4V4H23_nI-Dm4ZTW67qIu3LC8x0U09lBV33ssVYUe83UsKF0fTdh3OWDbN54SHHabDDZjS9n2UOZuJ1eJvvXQdtBxDivEXenOU0mEpcahM6yHXCwepeoNgCfoy3kg1mXYICgwsNrrUXlDgCSSy444XwLHARkFlZOK180dbMhIcAa7PRxzW2Ij_E-EY5ekehSv6TDcZeg_fske14MPQVBoAqvJcuJLc3To2SPOrqWEqVAUjgtn2reW&quot;);
-              "
-            ></div>
-            <div class="flex flex-col justify-center gap-1">
-              <p
-                class="text-slate-900 dark:text-white text-base font-bold leading-tight line-clamp-1"
-              >
-                Cartões de Visita (Premium)
-              </p>
-              <div class="flex items-center gap-2">
-                <span class="flex h-1.5 w-1.5 rounded-full bg-green-500"></span>
-                <p
-                  class="text-slate-500 dark:text-slate-400 text-xs font-medium leading-normal"
-                >
-                  Entregue • 24 Out, 2023
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="shrink-0 text-right flex flex-col items-end gap-1">
-            <p class="text-brand-orange font-black text-lg leading-none">
-              45,00€
-            </p>
-            <span
-              class="material-symbols-outlined text-slate-300 dark:text-slate-600 text-lg"
-              >chevron_right</span
-            >
-          </div>
-        </div>
-        <div
-          class="flex items-center gap-4 bg-white dark:bg-[#1A2633] px-4 min-h-[96px] py-4 rounded-xl border border-slate-200 dark:border-slate-800/80 shadow-sm shadow-slate-200/50 dark:shadow-none active:scale-[0.98] transition-all"
-        >
-          <div class="flex items-center gap-4 flex-1">
-            <div
-              class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-16 flex items-center justify-center bg-brand-blue/5 border border-slate-100 dark:border-slate-700"
-              style="
-                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCvX45JDn1ZHEeuqGeaWAJR7eV_cRCF2XfODEghtDtC5V7VVdEL3bKAmgGGkAVW9tFxwYPKbB6NM1a3RTE6S8TnPuZX3gRGLb9_GYpMh1tIJfj0uCVxbWUrqCSvrtIfxm4pAirnFwxQjDl5x7hQErk2BT9q3RLET_BjRPlBu_lQh9eDOlMy5JH0z1TwM87HIk54MQf5JK7DYrwHIJeYZ9sGnKf4DX2yWIoQvw4LyXhWauYCdwqnZ-5YiRMgJ3Xb0Y7YoEsRkAYcLiE0&quot;);
-              "
-            ></div>
-            <div class="flex flex-col justify-center gap-1">
-              <p
-                class="text-slate-900 dark:text-white text-base font-bold leading-tight line-clamp-1"
-              >
-                Banner Vinil (2x4ft)
-              </p>
-              <div class="flex items-center gap-2">
-                <span
-                  class="flex h-1.5 w-1.5 rounded-full bg-brand-orange animate-pulse"
-                ></span>
-                <p class="text-brand-orange text-xs font-bold leading-normal">
-                  Em Produção • 02 Nov
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="shrink-0 text-right flex flex-col items-end gap-1">
-            <p class="text-brand-orange font-black text-lg leading-none">
-              120,00€
-            </p>
-            <span
-              class="material-symbols-outlined text-slate-300 dark:text-slate-600 text-lg"
-              >chevron_right</span
-            >
-          </div>
-        </div>
-        <div
-          class="flex items-center gap-4 bg-white dark:bg-[#1A2633] px-4 min-h-[96px] py-4 rounded-xl border border-slate-200 dark:border-slate-800/80 shadow-sm shadow-slate-200/50 dark:shadow-none active:scale-[0.98] transition-all"
-        >
-          <div class="flex items-center gap-4 flex-1">
-            <div
-              class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-16 flex items-center justify-center bg-brand-blue/5 border border-slate-100 dark:border-slate-700"
-              style="
-                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAIZqmUMPYmrF62uind0wwuGOZra-TocndFDd1MBY3ZJw3K7nRiqqmGyzCbDPnmVKHJ7x4Iq-rvWJEt_7Hut29wRsyE3Z1j-zd0VZSATvX4KhSbiUcoekWNJ-fwwrhkmuMVUE6DLNFpq_asq-qwhKsWwIFPq03RpLsVwjydtZ8GRYRqOR2UE_ielhWtsBlALPwlswlNkb3uTPqBOXDRUAp8bzqXMTE_dk8Jr4Ry6-Iw8IW4iT_vhPawdfnK0RjmPqQfhhuPmma7vIqs&quot;);
-              "
-            ></div>
-            <div class="flex flex-col justify-center gap-1">
-              <p
-                class="text-slate-900 dark:text-white text-base font-bold leading-tight line-clamp-1"
-              >
-                Flyers de Marketing (x1000)
-              </p>
-              <div class="flex items-center gap-2">
-                <span class="flex h-1.5 w-1.5 rounded-full bg-green-500"></span>
-                <p
-                  class="text-slate-500 dark:text-slate-400 text-xs font-medium leading-normal"
-                >
-                  Entregue • 28 Set, 2023
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="shrink-0 text-right flex flex-col items-end gap-1">
-            <p class="text-brand-orange font-black text-lg leading-none">
-              85,00€
-            </p>
-            <span
-              class="material-symbols-outlined text-slate-300 dark:text-slate-600 text-lg"
-              >chevron_right</span
-            >
-          </div>
-        </div>
-      </div>
+      <div id="historico-list" class="flex flex-col px-4 gap-4"></div>
     </main>
     <nav
       class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] bg-white/80 dark:bg-brand-blue/90 ios-tab-bar border-t border-gray-200 dark:border-white/10 px-6 py-3 flex items-center justify-between z-30"
@@ -286,5 +163,9 @@
     </nav>
     <script defer src="js/mobile-flow.js"></script>
     <script defer src="js/auth-guard.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore-compat.js"></script>
+    <script defer src="js/firebase-init.js"></script>
+    <script defer src="js/customer-data.js"></script>
   </body>
 </html>

@@ -1,5 +1,6 @@
 (function () {
   var SESSION_KEY = "infinityart_session";
+  var ACCOUNT_CREATED_KEY = "infinityart_account_created";
 
   function getDb() {
     return window.InfinityFirebase && window.InfinityFirebase.db;
@@ -33,7 +34,7 @@
     document.head.appendChild(style);
   }
 
-  function showError(message) {
+  function showAlert(title, message, onClose) {
     ensureMobileAlertStyles();
 
     var previous = document.querySelector(".mobile-alert-backdrop");
@@ -47,7 +48,7 @@
 
     var head = document.createElement("div");
     head.className = "mobile-alert-head";
-    head.textContent = "Atenção";
+    head.textContent = String(title || "Alerta");
 
     var body = document.createElement("div");
     body.className = "mobile-alert-body";
@@ -60,8 +61,14 @@
     ok.className = "mobile-alert-btn";
     ok.type = "button";
     ok.textContent = "OK";
-    ok.addEventListener("click", function () {
+
+    function closeAlert() {
       backdrop.remove();
+      if (typeof onClose === "function") onClose();
+    }
+
+    ok.addEventListener("click", function () {
+      closeAlert();
     });
 
     actions.appendChild(ok);
@@ -70,9 +77,13 @@
     box.appendChild(actions);
     backdrop.appendChild(box);
     backdrop.addEventListener("click", function (event) {
-      if (event.target === backdrop) backdrop.remove();
+      if (event.target === backdrop) closeAlert();
     });
     document.body.appendChild(backdrop);
+  }
+
+  function showError(message) {
+    showAlert("Atenção", message);
   }
 
   function resetButtonListeners(button) {
@@ -123,6 +134,7 @@
       if (!doc) throw new Error("Não encontramos conta com este e-mail.");
       var data = doc.data() || {};
       var savedPassword = data.senha != null ? data.senha : data.password;
+      var perfil = String(data.perfil || data.role || "cliente").trim().toLowerCase();
       if (String(savedPassword || "") !== String(senha || "")) {
         throw new Error("Palavra-passe incorreta. Tente novamente.");
       }
@@ -130,6 +142,7 @@
         id: doc.id,
         nome: data.nome || "",
         email: data.email || "",
+        perfil: perfil,
       };
     });
   }
@@ -146,6 +159,7 @@
         email: String(email || "").trim(),
         emailNorm: normalizeEmail(email),
         senha: String(senha || ""),
+        perfil: "cliente",
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       };
 
@@ -154,6 +168,7 @@
           id: ref.id,
           nome: payload.nome,
           email: payload.email,
+          perfil: payload.perfil,
         };
       });
     });
@@ -213,9 +228,12 @@
 
       registerButton.disabled = true;
       registerUser(nome, email, senha)
-        .then(function (user) {
-          saveSession(user);
-          window.location.href = "Menu.html";
+        .then(function () {
+          localStorage.removeItem(SESSION_KEY);
+          try {
+            sessionStorage.setItem(ACCOUNT_CREATED_KEY, "1");
+          } catch (e) {}
+          window.location.href = "index.html";
         })
         .catch(function (error) {
           showError((error && error.message) || "Falha ao criar conta. Tente novamente.");
@@ -228,7 +246,15 @@
     bindPasswordToggles();
 
     var page = window.location.pathname.split("/").pop().toLowerCase();
-    if (page === "index.html") bindLogin();
+    if (page === "index.html") {
+      bindLogin();
+      try {
+        if (sessionStorage.getItem(ACCOUNT_CREATED_KEY) === "1") {
+          sessionStorage.removeItem(ACCOUNT_CREATED_KEY);
+          showAlert("Conta criada", "Conta criada com sucesso. Faça login para continuar.");
+        }
+      } catch (e) {}
+    }
     if (page === "criarconta.html") bindRegister();
   }
 
