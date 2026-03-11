@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   var SESSION_KEY = "infinityart_session";
 
   function getSession() {
@@ -48,7 +48,7 @@
   function statusMeta(rawStatus) {
     var status = getString(rawStatus).toLowerCase() || "pendente";
     if (status === "entregue") return { label: "Entregue", color: "text-emerald-500", badge: "bg-emerald-500/10" };
-    if (status === "em_producao") return { label: "Em producao", color: "text-amber-500", badge: "bg-amber-500/10" };
+    if (status === "em_producao") return { label: "Em produção", color: "text-amber-500", badge: "bg-amber-500/10" };
     if (status === "em_transporte") return { label: "Em transporte", color: "text-sky-500", badge: "bg-sky-500/10" };
     return { label: "Pendente", color: "text-orange-500", badge: "bg-orange-500/10" };
   }
@@ -159,7 +159,7 @@
 
     if (!pedidos.length) {
       listEl.innerHTML =
-        '<div class="rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-[#151f2b] p-4 text-sm text-slate-500 dark:text-slate-300">Este cliente ainda nao comprou nada na loja.</div>';
+        '<div class="rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-[#151f2b] p-4 text-sm text-slate-500 dark:text-slate-300">Este cliente ainda não comprou nada na loja.</div>';
       return;
     }
 
@@ -218,7 +218,7 @@
 
     if (!pedidos.length) {
       listEl.innerHTML =
-        '<div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#1A2633] p-4 text-sm text-slate-500 dark:text-slate-300">Este cliente ainda nao comprou nada na loja.</div>';
+        '<div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#1A2633] p-4 text-sm text-slate-500 dark:text-slate-300">Este cliente ainda não comprou nada na loja.</div>';
       return;
     }
 
@@ -298,7 +298,7 @@
 
     if (!pedidos.length) {
       container.innerHTML =
-        '<div class="rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-brand-blue/30 p-4 text-sm text-gray-600 dark:text-gray-300">Este cliente ainda nao comprou nada na loja.</div>';
+        '<div class="rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-brand-blue/30 p-4 text-sm text-gray-600 dark:text-gray-300">Este cliente ainda não comprou nada na loja.</div>';
       if (navWrapper && navWrapper.parentElement === root) {
         root.insertBefore(container, navWrapper);
       } else {
@@ -315,7 +315,7 @@
 
       if (!selectedPedido) {
         container.innerHTML =
-          '<div class="rounded-2xl border border-red-300/40 bg-red-500/10 p-4 text-sm text-red-200">Encomenda nao encontrada.</div>' +
+          '<div class="rounded-2xl border border-red-300/40 bg-red-500/10 p-4 text-sm text-red-200">Encomenda não encontrada.</div>' +
           '<a href="Encomendas.html" class="inline-flex mt-3 rounded-lg bg-white/10 px-3 py-2 text-xs font-bold uppercase tracking-wider text-white">Voltar a lista</a>';
         if (navWrapper && navWrapper.parentElement === root) {
           root.insertBefore(container, navWrapper);
@@ -357,7 +357,7 @@
         "</span></div></div>" +
         '<div class="mt-4 space-y-2">' +
         timelineItem("Encomenda efetuada", datePendente, !!datePendente) +
-        timelineItem("Em producao", dateProducao, !!dateProducao) +
+        timelineItem("Em produção", dateProducao, !!dateProducao) +
         timelineItem("Em transporte", dateTransporte, !!dateTransporte) +
         timelineItem("Entregue", dateEntregue, !!dateEntregue) +
         "</div></article>";
@@ -442,3 +442,4 @@
     init();
   }
 })();
+

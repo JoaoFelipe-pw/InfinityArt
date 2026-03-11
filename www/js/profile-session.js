@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   var SESSION_KEY = "infinityart_session";
   var DEFAULT_AVATAR_URL =
     "https://lh3.googleusercontent.com/aida-public/AB6AXuAOSIbUCijs89DhvgmnIf2xbaFg0wCGubrQSj_aABVK53GNfy4lXZncW6MNMbYkdwUezHLxdgDzGmob_XT8aNHdvw-oOhq-QmbTP7_d2rn4i5CoAvSCJ3piRAOFvYns96-WAONSRpePlNOdTNikp5MUya2NoETl-rHeD3KcW6HCbDY5a0eTJMxsau7saC1MvwMK9hp2oNzMbmlzSdLYfexIDfVpb4xqg5hq32NhKbz07WOh3L3UrR31KWzi9hvxnuswnt_Pa4NJVyAn";
@@ -219,9 +219,9 @@
       return "Falha de rede no upload. Tente novamente.";
     }
     if (code.indexOf("object-not-found") !== -1 || code.indexOf("bucket-not-found") !== -1) {
-      return "Bucket de armazenamento nao encontrado. Verifique a configuracao do Firebase.";
+      return "Bucket de armazenamento não encontrado. Verifique a configuração do Firebase.";
     }
-    return safeText((error && error.message) || "Nao foi possivel atualizar a foto de perfil.");
+    return safeText((error && error.message) || "Não foi possível atualizar a foto de perfil.");
   }
 
   function uploadAvatarToStorage(session, file) {
@@ -230,7 +230,7 @@
 
     if (!db) return Promise.reject(new Error("Base de dados indisponivel."));
     if (!storage) return Promise.reject(new Error("Upload de imagens indisponivel."));
-    if (!session || !session.id) return Promise.reject(new Error("Sessao invalida."));
+    if (!session || !session.id) return Promise.reject(new Error("Sessão inválida."));
 
     var extension = "jpg";
     if (file && file.type && file.type.indexOf("/") > -1) {
@@ -304,7 +304,7 @@
 
       img.onerror = function () {
         URL.revokeObjectURL(imageUrl);
-        reject(new Error("Nao foi possivel ler a imagem selecionada."));
+        reject(new Error("Não foi possível ler a imagem selecionada."));
       };
 
       img.src = imageUrl;
@@ -314,7 +314,7 @@
   function saveAvatarAsDataUrl(session, file) {
     var db = getDb();
     if (!db) return Promise.reject(new Error("Base de dados indisponivel."));
-    if (!session || !session.id) return Promise.reject(new Error("Sessao invalida."));
+    if (!session || !session.id) return Promise.reject(new Error("Sessão inválida."));
 
     return compressImageToDataUrl(file).then(function (dataUrl) {
       var payload = { fotoDataUrl: dataUrl, fotoUrl: "" };
@@ -359,7 +359,7 @@
       }
 
       if (file.size > MAX_FILE_BYTES) {
-        showAlert("Atenção", "A imagem deve ter no maximo 5MB.");
+        showAlert("Atenção", "A imagem deve ter no máximo 5MB.");
         input.value = "";
         return;
       }
@@ -403,3 +403,5 @@
     initProfile();
   }
 })();
+
+

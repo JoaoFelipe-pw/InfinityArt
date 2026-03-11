@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   var state = {
     uid: "",
     cliente: null,
@@ -95,6 +95,79 @@
 
   function showPedidoFeedback(message, tone) {
     showAreaFeedback("pedido-feedback", message, tone);
+  }
+
+  function ensureMobileAlertStyles() {
+    if (document.getElementById("mobile-alert-styles")) return;
+    var style = document.createElement("style");
+    style.id = "mobile-alert-styles";
+    style.textContent =
+      ".mobile-alert-backdrop{position:fixed;inset:0;background:rgba(2,8,23,.62);backdrop-filter:blur(2px);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;}" +
+      ".mobile-alert{width:100%;max-width:340px;border-radius:18px;background:linear-gradient(180deg,rgba(18,36,68,.96),rgba(8,20,42,.98));border:1px solid rgba(255,255,255,.12);box-shadow:0 22px 42px rgba(0,0,0,.45);overflow:hidden;color:#fff;font-family:Inter,sans-serif;}" +
+      ".mobile-alert-head{padding:14px 16px 6px 16px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,196,133,.95);}" +
+      ".mobile-alert-body{padding:0 16px 14px 16px;font-size:15px;line-height:1.45;color:rgba(241,245,249,.98);}" +
+      ".mobile-alert-actions{display:flex;border-top:1px solid rgba(255,255,255,.1);}" +
+      ".mobile-alert-btn{appearance:none;border:0;background:transparent;color:#ffb158;font-weight:700;font-size:16px;height:50px;width:100%;}" +
+      ".mobile-alert-btn.secondary{color:rgba(241,245,249,.85);}";
+    document.head.appendChild(style);
+  }
+
+  function showConfirm(title, message, onConfirm) {
+    ensureMobileAlertStyles();
+
+    var previous = document.querySelector(".mobile-alert-backdrop");
+    if (previous) previous.remove();
+
+    var backdrop = document.createElement("div");
+    backdrop.className = "mobile-alert-backdrop";
+
+    var box = document.createElement("div");
+    box.className = "mobile-alert";
+
+    var head = document.createElement("div");
+    head.className = "mobile-alert-head";
+    head.textContent = String(title || "Confirmar");
+
+    var body = document.createElement("div");
+    body.className = "mobile-alert-body";
+    body.textContent = String(message || "Tem a certeza?");
+
+    var actions = document.createElement("div");
+    actions.className = "mobile-alert-actions";
+
+    var cancel = document.createElement("button");
+    cancel.className = "mobile-alert-btn secondary";
+    cancel.type = "button";
+    cancel.textContent = "Cancelar";
+
+    var ok = document.createElement("button");
+    ok.className = "mobile-alert-btn";
+    ok.type = "button";
+    ok.textContent = "Excluir";
+
+    function closeAlert() {
+      backdrop.remove();
+    }
+
+    cancel.addEventListener("click", function () {
+      closeAlert();
+    });
+
+    ok.addEventListener("click", function () {
+      closeAlert();
+      if (typeof onConfirm === "function") onConfirm();
+    });
+
+    actions.appendChild(cancel);
+    actions.appendChild(ok);
+    box.appendChild(head);
+    box.appendChild(body);
+    box.appendChild(actions);
+    backdrop.appendChild(box);
+    backdrop.addEventListener("click", function (event) {
+      if (event.target === backdrop) closeAlert();
+    });
+    document.body.appendChild(backdrop);
   }
 
   function setFormDisabled(disabled) {
@@ -228,7 +301,7 @@
   function statusMeta(status) {
     var value = getString(status).toLowerCase() || "pendente";
     if (value === "entregue") return { label: "Entregue", className: "text-emerald-600 bg-emerald-600/10" };
-    if (value === "em_producao") return { label: "Em producao", className: "text-amber-600 bg-amber-600/10" };
+    if (value === "em_producao") return { label: "Em produção", className: "text-amber-600 bg-amber-600/10" };
     if (value === "em_transporte") return { label: "Em transporte", className: "text-sky-600 bg-sky-600/10" };
     return { label: "Pendente", className: "text-orange-600 bg-orange-600/10" };
   }
@@ -237,7 +310,7 @@
     var current = getString(currentStatus).toLowerCase() || "pendente";
     var options = [
       { value: "pendente", label: "Pendente" },
-      { value: "em_producao", label: "Em producao" },
+      { value: "em_producao", label: "Em produção" },
       { value: "em_transporte", label: "Em transporte" },
       { value: "entregue", label: "Entregue" },
     ];
@@ -297,6 +370,11 @@
           '">' +
           meta.label +
           "</span>" +
+          '<button data-pedido-delete="' +
+          pedido.id +
+          '" class="mt-2 w-full rounded border border-red-300/70 dark:border-red-500/60 px-2 py-1 text-[11px] font-bold uppercase tracking-wider text-red-700 dark:text-red-200 hover:bg-red-500/10">' +
+          "Excluir" +
+          "</button>" +
           '<select data-pedido-status data-pedido-id="' +
           pedido.id +
           '" class="mt-2 w-full rounded border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900 px-2 py-1 text-[11px] font-semibold text-slate-700 dark:text-slate-100">' +
@@ -397,7 +475,7 @@
   function loadCliente() {
     var db = getDb();
     if (!db) {
-      showFeedback("Base de dados nao inicializada.", "error");
+      showFeedback("Base de dados não inicializada.", "error");
       setFormDisabled(true);
       setPedidoFormDisabled(true);
       return;
@@ -412,7 +490,7 @@
       .get()
       .then(function (doc) {
         if (!doc.exists) {
-          throw new Error("Cliente nao encontrado.");
+          throw new Error("Cliente não encontrado.");
         }
 
         state.cliente = doc.data() || {};
@@ -440,7 +518,7 @@
     event.preventDefault();
     var db = getDb();
     if (!db) {
-      showFeedback("Base de dados nao inicializada.", "error");
+      showFeedback("Base de dados não inicializada.", "error");
       return;
     }
 
@@ -491,7 +569,7 @@
     event.preventDefault();
     var db = getDb();
     if (!db) {
-      showPedidoFeedback("Base de dados nao inicializada.", "error");
+      showPedidoFeedback("Base de dados não inicializada.", "error");
       return;
     }
 
@@ -528,6 +606,35 @@
       });
   }
 
+  function deletePedido(pedidoId, button) {
+    var db = getDb();
+    if (!db || !pedidoId) return;
+
+    showConfirm("Excluir pedido", "Excluir este pedido? Esta ação é definitiva.", function () {
+      if (button) button.disabled = true;
+      showPedidoFeedback("A eliminar pedido...", "info");
+
+      db.collection("pedidos")
+        .doc(pedidoId)
+        .delete()
+        .then(function () {
+          return loadPedidos(db);
+        })
+        .then(function () {
+          return recomputeAndPersistTotal(db);
+        })
+        .then(function () {
+          showPedidoFeedback("Pedido eliminado com sucesso.", "success");
+        })
+        .catch(function (error) {
+          showPedidoFeedback((error && error.message) || "Falha ao eliminar pedido.", "error");
+        })
+        .finally(function () {
+          if (button) button.disabled = false;
+        });
+    });
+  }
+
   function getUidFromQuery() {
     var params = new URLSearchParams(window.location.search || "");
     return getString(params.get("uid"));
@@ -542,6 +649,13 @@
 
     var pedidosList = byId("cliente-pedidos-list");
     if (pedidosList) {
+      pedidosList.addEventListener("click", function (event) {
+        var target = event.target.closest("[data-pedido-delete]");
+        if (!target) return;
+        var pedidoId = getString(target.getAttribute("data-pedido-delete"));
+        deletePedido(pedidoId, target);
+      });
+
       pedidosList.addEventListener("change", function (event) {
         var select = event.target.closest("[data-pedido-status]");
         if (!select) return;
@@ -550,6 +664,7 @@
         updatePedidoStatus(pedidoId, novoStatus, select);
       });
     }
+
   }
 
   function init() {
@@ -557,7 +672,7 @@
     state.uid = getUidFromQuery();
 
     if (!state.uid) {
-      showFeedback("Cliente nao informado. Volte a lista e clique em Gerir.", "error");
+      showFeedback("Cliente não informado. Volte à lista e clique em Gerir.", "error");
       setFormDisabled(true);
       setPedidoFormDisabled(true);
       return;
@@ -572,3 +687,4 @@
     init();
   }
 })();
+

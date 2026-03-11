@@ -15,11 +15,13 @@
   };
 
   var app = firebase.apps.length ? firebase.app() : firebase.initializeApp(firebaseConfig);
+  var auth = typeof firebase.auth === "function" ? firebase.auth(app) : null;
   var db = firebase.firestore(app);
   var storage = typeof firebase.storage === "function" ? firebase.storage(app) : null;
 
   window.InfinityFirebase = {
     app: app,
+    auth: auth,
     db: db,
     storage: storage,
   };

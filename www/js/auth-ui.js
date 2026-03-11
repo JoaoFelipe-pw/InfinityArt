@@ -6,6 +6,10 @@
     return window.InfinityFirebase && window.InfinityFirebase.db;
   }
 
+  function getAuth() {
+    return window.InfinityFirebase && window.InfinityFirebase.auth;
+  }
+
   function normalizeEmail(value) {
     return String(value || "").trim().toLowerCase();
   }
@@ -83,7 +87,7 @@
   }
 
   function showError(message) {
-    showAlert("Aten√ß√£o", message);
+    showAlert("AtenÁ„o", message);
   }
 
   function resetButtonListeners(button) {
@@ -111,7 +115,7 @@
 
   function findUserByEmail(email) {
     var db = getDb();
-    if (!db) return Promise.reject(new Error("Base de dados n√£o inicializada."));
+    if (!db) return Promise.reject(new Error("Base de dados n„o inicializada."));
 
     var emailTrimmed = String(email || "").trim();
     var emailNorm = normalizeEmail(emailTrimmed);
@@ -129,9 +133,94 @@
       });
   }
 
+  function findUserByUid(uid) {
+    var db = getDb();
+    if (!db) return Promise.reject(new Error("Base de dados n„o inicializada."));
+    if (!uid) return Promise.resolve(null);
+    return db
+      .collection("usuarios")
+      .where("uid", "==", String(uid))
+      .limit(1)
+      .get()
+      .then(function (snap) {
+        return snap.empty ? null : snap.docs[0];
+      });
+  }
+
+  function buildSessionFromDoc(doc, authUser) {
+    var data = (doc && doc.data()) || {};
+    var perfil = String(data.perfil || data.role || "cliente").trim().toLowerCase();
+    return {
+      id: (doc && doc.id) || (authUser && authUser.uid) || "",
+      nome: data.nome || (authUser && authUser.displayName) || "",
+      email: data.email || (authUser && authUser.email) || "",
+      perfil: perfil,
+    };
+  }
+
+  function ensureUserProfile(authUser, fallbackEmail, nomeHint) {
+    var db = getDb();
+    var uid = authUser && authUser.uid;
+    var email = (authUser && authUser.email) || fallbackEmail || "";
+    var emailNorm = normalizeEmail(email);
+
+    if (!db) {
+      return Promise.resolve({
+        id: uid || "",
+        nome: (authUser && authUser.displayName) || nomeHint || "",
+        email: email,
+        perfil: "cliente",
+      });
+    }
+
+    return findUserByUid(uid)
+      .then(function (doc) {
+        if (doc) return doc;
+        return findUserByEmail(email);
+      })
+      .then(function (doc) {
+        if (doc) {
+          var data = doc.data() || {};
+          var updates = {};
+          if (uid && !data.uid) updates.uid = uid;
+          if (email && !data.email) updates.email = String(email || "").trim();
+          if (emailNorm && !data.emailNorm) updates.emailNorm = emailNorm;
+          if (nomeHint && !data.nome) updates.nome = String(nomeHint || "").trim();
+          if (Object.keys(updates).length) {
+            return doc.ref.update(updates).then(function () {
+              return doc;
+            });
+          }
+          return doc;
+        }
+
+        var payload = {
+          nome: String(nomeHint || (authUser && authUser.displayName) || "").trim(),
+          email: String(email || "").trim(),
+          emailNorm: emailNorm,
+          uid: uid || null,
+          perfil: "cliente",
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        };
+
+        return db.collection("usuarios").add(payload).then(function (ref) {
+          return db.collection("usuarios").doc(ref.id).get();
+        });
+      })
+      .then(function (doc) {
+        return buildSessionFromDoc(doc, authUser);
+      });
+  }
   function loginUser(email, senha) {
+    var auth = getAuth();
+    if (auth && auth.signInWithEmailAndPassword) {
+      return auth.signInWithEmailAndPassword(email, senha).then(function (credential) {
+        return ensureUserProfile(credential && credential.user, email);
+      });
+    }
+
     return findUserByEmail(email).then(function (doc) {
-      if (!doc) throw new Error("N√£o encontramos conta com este e-mail.");
+      if (!doc) throw new Error("n„o encontramos conta com este e-mail.");
       var data = doc.data() || {};
       var savedPassword = data.senha != null ? data.senha : data.password;
       var perfil = String(data.perfil || data.role || "cliente").trim().toLowerCase();
@@ -146,10 +235,24 @@
       };
     });
   }
-
   function registerUser(nome, email, senha) {
     var db = getDb();
-    if (!db) return Promise.reject(new Error("Base de dados n√£o inicializada."));
+    if (!db) return Promise.reject(new Error("Base de dados n„o inicializada."));
+
+    var auth = getAuth();
+    if (auth && auth.createUserWithEmailAndPassword) {
+      return auth.createUserWithEmailAndPassword(email, senha).then(function (credential) {
+        var user = credential && credential.user;
+        var name = String(nome || "").trim();
+        var updatePromise =
+          user && name && typeof user.updateProfile === "function"
+            ? user.updateProfile({ displayName: name })
+            : Promise.resolve();
+        return updatePromise.then(function () {
+          return ensureUserProfile(user, email, name);
+        });
+      });
+    }
 
     return findUserByEmail(email).then(function (existing) {
       if (existing) throw new Error("Este e-mail j√° est√° associado a uma conta.");
@@ -173,11 +276,10 @@
       });
     });
   }
-
   function bindLogin() {
     var emailInput = document.querySelector("input[type='email']");
     var passwordInput = document.querySelector("input[type='password']");
-    var originalButton = byTextButton("entrar");
+    var originalButton = document.getElementById("login-btn") || byTextButton("entrar");
     var loginButton = originalButton ? resetButtonListeners(originalButton) : null;
     if (!emailInput || !passwordInput || !loginButton) return;
 
@@ -226,6 +328,11 @@
         return;
       }
 
+      if (String(senha || "").length < 6) {
+        showError("A palavra-passe deve ter pelo menos 6 caracteres.");
+        return;
+      }
+
       registerButton.disabled = true;
       registerUser(nome, email, senha)
         .then(function () {
@@ -264,3 +371,8 @@
     init();
   }
 })();
+
+
+
+
+

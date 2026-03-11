@@ -24,6 +24,7 @@
     localStorage.removeItem(SESSION_KEY);
   }
 
+
   function currentPage() {
     return window.location.pathname.split("/").pop().toLowerCase();
   }

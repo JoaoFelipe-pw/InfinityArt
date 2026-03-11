@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Iniciar Sessão InfinityArt</title>
+    <title>Criar Conta InfinityArt</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
@@ -72,9 +72,9 @@
     </div>
     <div class="px-6 flex flex-col gap-6">
       <div class="text-center mb-2">
-        <h2 class="text-white text-xl font-semibold">Iniciar Sessão</h2>
+        <h2 class="text-white text-xl font-semibold">Criar Conta</h2>
         <p class="text-slate-400 text-sm mt-1">
-          Faça login para gerir as suas encomendas
+          Registe-se para gerir as suas encomendas
         </p>
       </div>
       <div class="flex flex-col gap-4">
@@ -111,11 +111,6 @@
             <label class="text-slate-300 text-sm font-medium"
               >Palavra-passe</label
             >
-            <a
-              class="text-accent text-xs font-semibold hover:underline"
-              href="#"
-              >Esqueceu-se da palavra-passe?</a
-            >
           </div>
           <div class="relative f7-field">
             <span
@@ -125,6 +120,7 @@
             <input
               class="w-full bg-deep-space/50 border border-white/10 rounded-2xl h-14 pl-12 pr-12 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all f7-input"
               placeholder="••••••••"
+              minlength="6"
               type="password"
             />
             <button
@@ -145,15 +141,16 @@
     <br />
     <div class="mt-auto pb-8 px-6 text-center">
       <p class="text-slate-400 text-sm">
-        Antigo na InfinityArt?
+        Ja tem conta?
         <a class="text-accent font-bold ml-1 hover:underline" href="index.html"
-          >Ja Tenho Conta Na InfinityArt!</a
+          >Entrar</a
         >
       </p>
     </div>
     <div class="h-1 w-32 bg-white/20 rounded-full mx-auto mb-2"></div>
     <script defer src="js/mobile-flow.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-auth-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore-compat.js"></script>
     <script defer src="js/firebase-init.js"></script>
     <script defer src="js/auth-ui.js"></script>

@@ -49,21 +49,22 @@
     <div class="h-12 bg-transparent"></div>
 
     <header class="flex flex-col items-center px-6 pt-10 pb-6">
-      <div class="relative mb-6">
+      <div class="relative mb-7">
+        <div class="absolute -inset-6 rounded-full bg-white/10 blur-2xl"></div>
+        <div class="absolute inset-0 rounded-full blur-3xl bg-accent/30 -z-10"></div>
         <div
-          class="w-32 h-32 rounded-full border-4 border-accent p-1 bg-deep-space shadow-[0_0_20px_rgba(255,140,0,0.3)] flex items-center justify-center overflow-hidden"
+          class="w-36 h-36 rounded-full border-4 border-white/30 p-2 bg-deep-space shadow-[0_0_26px_rgba(255,140,0,0.45)] flex items-center justify-center overflow-hidden"
         >
           <div
-            class="w-full h-full rounded-full flex items-center justify-center bg-gradient-to-br from-primary to-deep-space"
+            class="w-full h-full rounded-full flex items-center justify-center bg-gradient-to-br from-accent via-primary to-deep-space p-2"
           >
-            <span class="material-symbols-outlined text-white text-6xl">
-              <img src="img/images.jpg" alt="Logo InfinityArt" />
-            </span>
+            <img
+              class="w-full h-full rounded-full object-cover ring-2 ring-white/70 shadow-[0_14px_32px_rgba(255,140,0,0.45)]"
+              src="img/images.jpg"
+              alt="Logo InfinityArt"
+            />
           </div>
         </div>
-        <div
-          class="absolute inset-0 rounded-full blur-2xl bg-accent/20 -z-10"
-        ></div>
       </div>
 
       <h1
@@ -133,6 +134,7 @@
       </section>
 
       <button
+        id="login-btn"
         class="w-full h-14 bg-accent text-white font-bold rounded-2xl shadow-lg shadow-accent/20 active:scale-[0.98] transition-all text-lg mt-2"
         type="button"
       >
@@ -154,6 +156,7 @@
     <div class="h-1 w-32 bg-white/20 rounded-full mx-auto mb-2"></div>
     <script defer src="js/mobile-flow.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-auth-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore-compat.js"></script>
     <script defer src="js/firebase-init.js"></script>
     <script defer src="js/auth-ui.js"></script>
