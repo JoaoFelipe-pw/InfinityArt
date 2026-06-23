@@ -5,19 +5,30 @@
   }
 
   const firebaseConfig = {
-    apiKey: "AIzaSyDp72KCaKjPUvdFB2tqLCmKPbQb3yljzh4",
-    authDomain: "infinityart-17a46.firebaseapp.com",
-    projectId: "infinityart-17a46",
-    storageBucket: "infinityart-17a46.firebasestorage.app",
-    messagingSenderId: "957825069999",
-    appId: "1:957825069999:web:3465f97c0715cb0977755a",
-    measurementId: "G-HY6SR1DKW8",
+    apiKey: "AIzaSyBZU7osNV93yBpAYwMbO39g8ZdppkxXpUA",
+    authDomain: "infinityartfinal.firebaseapp.com",
+    projectId: "infinityartfinal",
+    storageBucket: "infinityartfinal.firebasestorage.app",
+    messagingSenderId: "624502000124",
+    appId: "1:624502000124:web:6fb70d6ceb27b704668a79",
+    measurementId: "G-J0WN0ZC3NT",
   };
 
   var app = firebase.apps.length ? firebase.app() : firebase.initializeApp(firebaseConfig);
   var auth = typeof firebase.auth === "function" ? firebase.auth(app) : null;
   var db = firebase.firestore(app);
   var storage = typeof firebase.storage === "function" ? firebase.storage(app) : null;
+
+  var persistence =
+    firebase.auth &&
+    firebase.auth.Auth &&
+    firebase.auth.Auth.Persistence &&
+    firebase.auth.Auth.Persistence.LOCAL;
+  if (auth && persistence && typeof auth.setPersistence === "function") {
+    auth.setPersistence(persistence).catch(function (error) {
+      console.warn("Falha ao definir persistencia de login:", error);
+    });
+  }
 
   window.InfinityFirebase = {
     app: app,

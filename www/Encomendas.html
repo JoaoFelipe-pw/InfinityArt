@@ -59,8 +59,9 @@
       </main>
     </div>
 
-    <nav
-      class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] bg-white/80 dark:bg-brand-blue/90 ios-tab-bar border-t border-gray-200 dark:border-white/10 px-6 py-3 flex items-center justify-between z-30"
+    <footer class="app-footer">
+      <nav
+      class="app-footer__inner px-6 py-3 flex items-center justify-between"
     >
       <a href="Menu.html" class="flex flex-col items-center gap-1 group cursor-pointer">
         <span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">home</span>
@@ -81,10 +82,12 @@
         <span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">person</span>
         <span class="text-[10px] font-bold text-gray-400 group-hover:text-primary uppercase tracking-tighter">Perfil</span>
       </a>
-    </nav>
+      </nav>
+    </footer>
 
     <script defer src="js/mobile-flow.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-auth-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore-compat.js"></script>
     <script defer src="js/firebase-init.js"></script>
     <script defer src="js/auth-guard.js"></script>

@@ -222,9 +222,10 @@
         </section>
       </main>
 
-      <nav
-        class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] bg-white/85 dark:bg-brand-blue/90 border-t border-slate-200 dark:border-white/10 px-10 py-3 pb-6 flex items-center justify-between z-30"
-      >
+      <footer class="app-footer app-footer--narrow">
+        <nav
+          class="app-footer__inner px-10 py-3 pb-6 flex items-center justify-between"
+        >
         <a href="Menu.html" class="flex flex-col items-center gap-1 app-tab-link">
           <span class="material-symbols-outlined text-slate-400">home</span>
           <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wide">Inicio</span>
@@ -233,11 +234,13 @@
           <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1">group</span>
           <span class="text-[10px] font-bold text-primary uppercase tracking-wide">Clientes</span>
         </a>
-      </nav>
+        </nav>
+      </footer>
     </div>
 
     <script defer src="js/mobile-flow.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-auth-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore-compat.js"></script>
     <script defer src="js/firebase-init.js"></script>
     <script defer src="js/auth-guard.js"></script>

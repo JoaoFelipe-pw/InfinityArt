@@ -1,6 +1,7 @@
-(function () {
+﻿(function () {
   var SESSION_KEY = "infinityart_session";
   var ACCOUNT_CREATED_KEY = "infinityart_account_created";
+  var LOGOUT_KEY = "infinityart_logout";
 
   function getDb() {
     return window.InfinityFirebase && window.InfinityFirebase.db;
@@ -14,8 +15,41 @@
     return String(value || "").trim().toLowerCase();
   }
 
-  function saveSession(user) {
+    function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email || "").trim());
+  }
+
+  function setInputValidity(input, isValid) {
+    if (!input) return;
+    if (isValid) {
+      input.classList.remove("border-red-500", "ring-2", "ring-red-400/30");
+      input.removeAttribute("aria-invalid");
+      return;
+    }
+    input.classList.add("border-red-500", "ring-2", "ring-red-400/30");
+    input.setAttribute("aria-invalid", "true");
+  }
+function saveSession(user) {
     localStorage.setItem(SESSION_KEY, JSON.stringify(user));
+  }
+
+  function clearLogoutFlag() {
+    try {
+      localStorage.removeItem(LOGOUT_KEY);
+    } catch (e) {}
+  }
+
+  function getStoredSession() {
+    try {
+      var raw = localStorage.getItem(SESSION_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function clearStoredSession() {
+    localStorage.removeItem(SESSION_KEY);
   }
 
   function byTextButton(text) {
@@ -87,7 +121,48 @@
   }
 
   function showError(message) {
-    showAlert("Aten��o", message);
+    showAlert("Atenção", message);
+  }
+
+  function humanAuthError(error, context) {
+    var code = safeText((error && (error.code || error.message)) || "").toLowerCase();
+
+    if (code.indexOf("auth/invalid-credential") !== -1) {
+      return "E-mail ou senha incorretos.";
+    }
+    if (code.indexOf("auth/wrong-password") !== -1) {
+      return "Senha incorreta.";
+    }
+    if (code.indexOf("auth/user-not-found") !== -1) {
+      return "Conta nao encontrada.";
+    }
+    if (code.indexOf("auth/invalid-email") !== -1) {
+      return "E-mail invalido.";
+    }
+    if (code.indexOf("auth/user-disabled") !== -1) {
+      return "Conta desativada.";
+    }
+    if (code.indexOf("auth/network-request-failed") !== -1) {
+      return "Falha de rede. Verifique a ligacao.";
+    }
+    if (code.indexOf("auth/too-many-requests") !== -1) {
+      return "Muitas tentativas. Tente novamente mais tarde.";
+    }
+
+    if (context === "register") {
+      if (code.indexOf("auth/email-already-in-use") !== -1) {
+        return "Este e-mail ja esta em uso.";
+      }
+      if (code.indexOf("auth/weak-password") !== -1) {
+        return "A senha e fraca. Use pelo menos 6 caracteres.";
+      }
+      if (code.indexOf("auth/operation-not-allowed") !== -1) {
+        return "Registo desativado. Contacte o administrador.";
+      }
+      return "Falha ao criar conta. Tente novamente.";
+    }
+
+    return "Falha ao iniciar sessao. Verifique os dados e tente novamente.";
   }
 
   function resetButtonListeners(button) {
@@ -115,7 +190,7 @@
 
   function findUserByEmail(email) {
     var db = getDb();
-    if (!db) return Promise.reject(new Error("Base de dados n�o inicializada."));
+    if (!db) return Promise.reject(new Error("Base de dados não inicializada."));
 
     var emailTrimmed = String(email || "").trim();
     var emailNorm = normalizeEmail(emailTrimmed);
@@ -135,7 +210,7 @@
 
   function findUserByUid(uid) {
     var db = getDb();
-    if (!db) return Promise.reject(new Error("Base de dados n�o inicializada."));
+    if (!db) return Promise.reject(new Error("Base de dados não inicializada."));
     if (!uid) return Promise.resolve(null);
     return db
       .collection("usuarios")
@@ -211,68 +286,64 @@
         return buildSessionFromDoc(doc, authUser);
       });
   }
+
+  function restoreSessionFromAuth() {
+    var auth = getAuth();
+    if (!auth || typeof auth.onAuthStateChanged !== "function") return;
+    auth.onAuthStateChanged(function (user) {
+      var logoutFlag = null;
+      try {
+        logoutFlag = localStorage.getItem(LOGOUT_KEY);
+      } catch (e) {}
+      if (user && logoutFlag) {
+        auth.signOut().catch(function () {}).finally(function () {
+          clearLogoutFlag();
+        });
+        return;
+      }
+      if (user) {
+        ensureUserProfile(user, user.email)
+          .then(function (session) {
+            saveSession(session);
+            clearLogoutFlag();
+            window.location.href = "Menu.html";
+          })
+          .catch(function () {});
+        return;
+      }
+      if (getStoredSession()) {
+        clearStoredSession();
+      }
+      clearLogoutFlag();
+    });
+  }
   function loginUser(email, senha) {
     var auth = getAuth();
-    if (auth && auth.signInWithEmailAndPassword) {
-      return auth.signInWithEmailAndPassword(email, senha).then(function (credential) {
-        return ensureUserProfile(credential && credential.user, email);
-      });
+    if (!auth || !auth.signInWithEmailAndPassword) {
+      return Promise.reject(new Error("Autenticação não inicializada."));
     }
-
-    return findUserByEmail(email).then(function (doc) {
-      if (!doc) throw new Error("n�o encontramos conta com este e-mail.");
-      var data = doc.data() || {};
-      var savedPassword = data.senha != null ? data.senha : data.password;
-      var perfil = String(data.perfil || data.role || "cliente").trim().toLowerCase();
-      if (String(savedPassword || "") !== String(senha || "")) {
-        throw new Error("Palavra-passe incorreta. Tente novamente.");
-      }
-      return {
-        id: doc.id,
-        nome: data.nome || "",
-        email: data.email || "",
-        perfil: perfil,
-      };
+    return auth.signInWithEmailAndPassword(email, senha).then(function (credential) {
+      return ensureUserProfile(credential && credential.user, email);
     });
   }
   function registerUser(nome, email, senha) {
     var db = getDb();
-    if (!db) return Promise.reject(new Error("Base de dados n�o inicializada."));
+    if (!db) return Promise.reject(new Error("Base de dados não inicializada."));
 
     var auth = getAuth();
-    if (auth && auth.createUserWithEmailAndPassword) {
-      return auth.createUserWithEmailAndPassword(email, senha).then(function (credential) {
-        var user = credential && credential.user;
-        var name = String(nome || "").trim();
-        var updatePromise =
-          user && name && typeof user.updateProfile === "function"
-            ? user.updateProfile({ displayName: name })
-            : Promise.resolve();
-        return updatePromise.then(function () {
-          return ensureUserProfile(user, email, name);
-        });
-      });
+    if (!auth || !auth.createUserWithEmailAndPassword) {
+      return Promise.reject(new Error("Autenticação não inicializada."));
     }
 
-    return findUserByEmail(email).then(function (existing) {
-      if (existing) throw new Error("Este e-mail já está associado a uma conta.");
-
-      var payload = {
-        nome: String(nome || "").trim(),
-        email: String(email || "").trim(),
-        emailNorm: normalizeEmail(email),
-        senha: String(senha || ""),
-        perfil: "cliente",
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      };
-
-      return db.collection("usuarios").add(payload).then(function (ref) {
-        return {
-          id: ref.id,
-          nome: payload.nome,
-          email: payload.email,
-          perfil: payload.perfil,
-        };
+    return auth.createUserWithEmailAndPassword(email, senha).then(function (credential) {
+      var user = credential && credential.user;
+      var name = String(nome || "").trim();
+      var updatePromise =
+        user && name && typeof user.updateProfile === "function"
+          ? user.updateProfile({ displayName: name })
+          : Promise.resolve();
+      return updatePromise.then(function () {
+        return ensureUserProfile(user, email, name);
       });
     });
   }
@@ -298,10 +369,11 @@
       loginUser(email, senha)
         .then(function (user) {
           saveSession(user);
+          clearLogoutFlag();
           window.location.href = "Menu.html";
         })
         .catch(function (error) {
-          showError((error && error.message) || "Falha ao iniciar sessão. Verifique a ligação e tente novamente.");
+          showError(humanAuthError(error, "login"));
           loginButton.disabled = false;
         });
     });
@@ -318,6 +390,17 @@
 
     registerButton.removeAttribute("onclick");
     registerButton.type = "button";
+
+    if (emailInput) {
+      var validateEmail = function () {
+        var value = emailInput.value.trim();
+        var valid = !value || isValidEmail(value);
+        setInputValidity(emailInput, valid);
+      };
+      emailInput.addEventListener("input", validateEmail);
+      emailInput.addEventListener("blur", validateEmail);
+    }
+
     registerButton.addEventListener("click", function () {
       var nome = nameInput.value.trim();
       var email = emailInput.value.trim();
@@ -325,6 +408,12 @@
 
       if (!nome || !email || !senha) {
         showError("Preencha nome, e-mail e palavra-passe.");
+        return;
+      }
+
+      if (!isValidEmail(email)) {
+        showError("Informe um e-mail válido.");
+        setInputValidity(emailInput, false);
         return;
       }
 
@@ -337,19 +426,20 @@
       registerUser(nome, email, senha)
         .then(function () {
           localStorage.removeItem(SESSION_KEY);
+          clearLogoutFlag();
           try {
             sessionStorage.setItem(ACCOUNT_CREATED_KEY, "1");
           } catch (e) {}
           window.location.href = "index.html";
         })
         .catch(function (error) {
-          showError((error && error.message) || "Falha ao criar conta. Tente novamente.");
+          showError(humanAuthError(error, "register"));
           registerButton.disabled = false;
         });
     });
   }
-
   function init() {
+    restoreSessionFromAuth();
     bindPasswordToggles();
 
     var page = window.location.pathname.split("/").pop().toLowerCase();
@@ -371,6 +461,8 @@
     init();
   }
 })();
+
+
 
 
 

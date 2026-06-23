@@ -23,6 +23,58 @@ nav.fixed.bottom-0 {
   padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
 }
 
+.app-footer {
+  --app-footer-bg: rgba(255, 255, 255, 0.9);
+  --app-footer-inner-bg: rgba(255, 255, 255, 0.96);
+  --app-footer-border: rgba(226, 232, 240, 0.9);
+  --app-footer-max: 480px;
+  --app-footer-radius: 22px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+  padding: 0.5rem 0.75rem max(0.75rem, env(safe-area-inset-bottom));
+  display: flex;
+  justify-content: center;
+}
+
+.app-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--app-footer-bg);
+  border-top: 1px solid var(--app-footer-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.app-footer__inner {
+  position: relative;
+  width: 100%;
+  max-width: var(--app-footer-max);
+  border-radius: var(--app-footer-radius) var(--app-footer-radius) 0 0;
+  overflow: hidden;
+  border: 1px solid var(--app-footer-border);
+  background: var(--app-footer-inner-bg);
+  box-shadow: 0 -12px 24px rgba(15, 23, 42, 0.12);
+}
+
+.app-footer--narrow {
+  --app-footer-max: 430px;
+}
+
+.app-footer--full {
+  --app-footer-max: 100%;
+  --app-footer-radius: 0;
+}
+
+html.dark .app-footer {
+  --app-footer-bg: rgba(9, 24, 46, 0.92);
+  --app-footer-inner-bg: rgba(10, 26, 48, 0.96);
+  --app-footer-border: rgba(71, 85, 105, 0.55);
+}
+
 .app-page-enter {
   animation: app-enter var(--app-transition-duration) ease both;
 }

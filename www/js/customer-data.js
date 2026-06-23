@@ -45,6 +45,20 @@
     });
   }
 
+  function toDateTimeText(date) {
+    if (!date || isNaN(date.getTime())) return "-";
+    var day = date.toLocaleDateString("pt-PT", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
+    var time = date.toLocaleTimeString("pt-PT", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    return day + " " + time;
+  }
+
   function statusMeta(rawStatus) {
     var status = getString(rawStatus).toLowerCase() || "pendente";
     if (status === "entregue") return { label: "Entregue", color: "text-emerald-500", badge: "bg-emerald-500/10" };
@@ -90,7 +104,7 @@
       '<p class="text-xs mt-1 ' +
       (isDone ? "text-emerald-700/80 dark:text-emerald-200/80" : "text-gray-500 dark:text-gray-400") +
       '">' +
-      (date ? toDateText(date) : "Por atualizar") +
+      (date ? toDateTimeText(date) : "Por atualizar") +
       "</p></div>"
     );
   }

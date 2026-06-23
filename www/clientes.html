@@ -1,10 +1,10 @@
-<!doctype html>
+Ôªø<!doctype html>
 
 <html class="dark" lang="pt-br">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Gest„o de Clientes InfinityArt</title>
+    <title>Gest√£o de Clientes InfinityArt</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
@@ -115,15 +115,16 @@
       </main>
     </div>
 
-    <nav
-      class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] bg-white/90 dark:bg-surface-dark/95 backdrop-blur-xl border-t border-slate-200 dark:border-accent-dark px-8 py-3 pb-6 flex items-center justify-around z-30"
+    <footer class="app-footer app-footer--narrow">
+      <nav
+      class="app-footer__inner px-8 py-3 pb-6 flex items-center justify-around"
     >
       <a
         class="flex flex-col items-center gap-1 text-slate-400 app-tab-link"
         href="Menu.html"
       >
         <span class="material-symbols-outlined">dashboard</span>
-        <span class="text-[10px] font-medium leading-none">InÌcio</span>
+        <span class="text-[10px] font-medium leading-none">In√≠cio</span>
       </a>
       <a
         class="flex flex-col items-center gap-1 text-primary app-tab-link is-active"
@@ -136,16 +137,17 @@
         >
         <span class="text-[10px] font-medium leading-none">Clientes</span>
       </a>
-    </nav>
+      </nav>
+    </footer>
     <script defer src="js/mobile-flow.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-auth-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore-compat.js"></script>
     <script defer src="js/firebase-init.js"></script>
     <script defer src="js/auth-guard.js"></script>
     <script defer src="js/clientes-list.js"></script>
   </body>
 </html>
-
 
 
 

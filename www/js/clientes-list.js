@@ -8,6 +8,10 @@
     return window.InfinityFirebase && window.InfinityFirebase.db;
   }
 
+  function getAuth() {
+    return window.InfinityFirebase && window.InfinityFirebase.auth;
+  }
+
   function normalize(value) {
     return String(value || "").trim().toLowerCase();
   }
@@ -137,9 +141,30 @@
       });
   }
 
+  function waitForAuth() {
+    var auth = getAuth();
+    if (!auth || typeof auth.onAuthStateChanged !== "function") {
+      loadClientes();
+      return;
+    }
+
+    auth.onAuthStateChanged(function (user) {
+      if (!user) {
+        var emptyEl = document.getElementById("clientes-empty");
+        if (emptyEl) {
+          emptyEl.textContent = "Inicie sessao novamente para carregar as contas.";
+          emptyEl.classList.remove("hidden");
+        }
+        return;
+      }
+
+      loadClientes();
+    });
+  }
+
   function init() {
     bindSearch();
-    loadClientes();
+    waitForAuth();
   }
 
   if (document.readyState === "loading") {

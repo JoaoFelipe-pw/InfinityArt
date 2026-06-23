@@ -4,9 +4,19 @@
     cliente: null,
     pedidos: [],
   };
+  var SESSION_KEY = "infinityart_session";
 
   function getDb() {
     return window.InfinityFirebase && window.InfinityFirebase.db;
+  }
+
+  function getSession() {
+    try {
+      var raw = localStorage.getItem(SESSION_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
   }
 
   function byId(id) {
@@ -23,6 +33,15 @@
 
   function getString(value) {
     return String(value == null ? "" : value).trim();
+  }
+
+  function getAdminLabel() {
+    var session = getSession();
+    var nome = getString(session && session.nome);
+    if (nome) return nome;
+    var email = getString(session && session.email);
+    if (email) return email;
+    return "Administrador";
   }
 
   function toCurrency(value) {
@@ -229,6 +248,11 @@
     if (!email) throw new Error("Preencha o e-mail do cliente.");
     if (!isValidEmail(email)) throw new Error("Informe um e-mail valido.");
 
+    var adminLabel = getAdminLabel();
+    var adminMessage = adminLabel
+      ? "O administrador " + adminLabel + " atualizou os dados da sua conta."
+      : "O administrador atualizou os dados da sua conta.";
+
     return {
       nome: nome,
       email: email,
@@ -236,6 +260,9 @@
       totalGasto: Number((state.cliente && state.cliente.totalGasto) || 0),
       ativo: ativoRaw !== "false",
       updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+      adminUpdateAt: firebase.firestore.FieldValue.serverTimestamp(),
+      adminUpdatedBy: adminLabel,
+      adminUpdateMessage: adminMessage,
     };
   }
 

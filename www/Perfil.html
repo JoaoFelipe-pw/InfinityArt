@@ -134,14 +134,14 @@
             ></div>
             <div
               class="absolute top-4 right-4 text-white/10 text-8xl font-black"
-            >€</div>
+            >â‚¬</div>
             <div class="absolute bottom-4 left-4 flex items-center gap-2">
               <span class="material-symbols-outlined text-accent text-3xl"
                 >payments</span
               >
               <span
                 class="text-white/40 text-[10px] font-bold uppercase tracking-widest"
-                >Registo de Faturação</span
+                >Registo de FaturaÃ§Ã£o</span
               >
             </div>
           </div>
@@ -158,7 +158,7 @@
                 id="profile-total-gasto"
                 class="text-slate-900 dark:text-white text-4xl font-black leading-tight tracking-tighter"
               >
-                €0,00
+                â‚¬0,00
               </p>
             </div>
             <div class="flex items-center gap-3 justify-between mt-3">
@@ -196,9 +196,10 @@
       <div id="profile-recent-orders" class="flex flex-col px-4 gap-3"></div>
       <div class="p-4 mt-6"></div>
       <br /><br />
-      <nav
-        class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] bg-white/80 dark:bg-brand-blue/90 ios-tab-bar border-t border-gray-200 dark:border-white/10 px-6 py-3 flex items-center justify-between z-30"
-      >
+      <footer class="app-footer">
+        <nav
+          class="app-footer__inner px-6 py-3 flex items-center justify-between"
+        >
         <a
           href="Menu.html"
           class="flex flex-col items-center gap-1 group cursor-pointer app-tab-link"
@@ -209,7 +210,7 @@
           >
           <span
             class="text-[10px] font-bold text-gray-400 group-hover:text-primary uppercase tracking-tighter"
-            >Início</span
+            >InÃ­cio</span
           >
         </a>
 
@@ -237,7 +238,7 @@
           >
           <span
             class="text-[10px] font-bold text-gray-400 group-hover:text-primary uppercase tracking-tighter"
-            >Histórico</span
+            >HistÃ³rico</span
           >
         </a>
 
@@ -254,10 +255,12 @@
             >Perfil</span
           >
         </a>
-      </nav>
+        </nav>
+      </footer>
     </div>
     <script defer src="js/mobile-flow.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-auth-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-storage-compat.js"></script>
     <script defer src="js/firebase-init.js"></script>

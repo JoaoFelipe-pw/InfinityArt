@@ -1,9 +1,9 @@
-<!doctype html>
+ï»¿<!doctype html>
 <html class="dark" lang="pt-PT">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Histórico de Compras - Grafica InfinityArt</title>
+    <title>HistÃ³rico de Compras - Grafica InfinityArt</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
@@ -60,7 +60,7 @@
           <h2
             class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight"
           >
-            Histórico de Compras
+            HistÃ³rico de Compras
           </h2>
           <p
             class="text-[10px] text-brand-orange font-bold uppercase tracking-widest"
@@ -102,8 +102,9 @@
       </div>
       <div id="historico-list" class="flex flex-col px-4 gap-4"></div>
     </main>
-    <nav
-      class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] bg-white/80 dark:bg-brand-blue/90 ios-tab-bar border-t border-gray-200 dark:border-white/10 px-6 py-3 flex items-center justify-between z-30"
+    <footer class="app-footer">
+      <nav
+      class="app-footer__inner px-6 py-3 flex items-center justify-between"
     >
       <a
         href="Menu.html"
@@ -115,7 +116,7 @@
         >
         <span
           class="text-[10px] font-bold text-gray-400 group-hover:text-primary uppercase tracking-tighter"
-          >Início</span
+          >InÃ­cio</span
         >
       </a>
 
@@ -143,7 +144,7 @@
         >
         <span
           class="text-[10px] font-bold text-gray-400 group-hover:text-primary uppercase tracking-tighter"
-          >Histórico</span
+          >HistÃ³rico</span
         >
       </a>
 
@@ -160,16 +161,17 @@
           >Perfil</span
         >
       </a>
-    </nav>
+      </nav>
+    </footer>
     <script defer src="js/mobile-flow.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-app-compat.js"></script>
-<script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-auth-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore-compat.js"></script>
     <script defer src="js/firebase-init.js"></script>
     <script defer src="js/auth-guard.js"></script>
     <script defer src="js/customer-data.js"></script>
   </body>
 </html>
-
 
 
 

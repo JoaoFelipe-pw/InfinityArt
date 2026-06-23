@@ -66,7 +66,7 @@
     <main class="p-4 pb-24 space-y-6">
       <!-- Welcome Header -->
       <div>
-        <h1 class="text-2xl font-bold">Painel de Administração</h1>
+        <h1 class="text-2xl font-bold">Painel de AdministraÃ§Ã£o</h1>
         <p class="text-slate-500 text-sm">Bem-vindo de volta, Administrador</p>
       </div>
       <!-- Summary Tiles (KPIs) -->
@@ -80,7 +80,7 @@
             >
               Total de Vendas
             </p>
-            <h2 id="admin-total-sales" class="text-3xl font-bold mt-1">€ 0,00</h2>
+            <h2 id="admin-total-sales" class="text-3xl font-bold mt-1">â‚¬ 0,00</h2>
           </div>
           <div class="bg-white/20 p-3 rounded-lg">
             <span class="material-icons-round text-3xl">payments</span>
@@ -140,16 +140,19 @@
       </div>
     </main>
     <!-- iOS Tab Bar -->
-    <nav
-      class="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-background-dark/80 backdrop-blur-xl border-t border-slate-200 dark:border-border-dark px-6 py-2 pb-8 flex justify-center items-center z-50"
+    <footer class="app-footer app-footer--full">
+      <nav
+      class="app-footer__inner px-6 py-2 pb-8 flex justify-center items-center"
     >
       <a href="Menu.html" class="flex flex-col items-center gap-1 text-primary">
         <span class="material-icons-round">dashboard</span>
-        <span class="text-[10px] font-bold">Início</span>
+        <span class="text-[10px] font-bold">InÃ­cio</span>
       </a>
-    </nav>
+      </nav>
+    </footer>
     <script defer src="js/mobile-flow.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-auth-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore-compat.js"></script>
     <script defer src="js/firebase-init.js"></script>
     <script defer src="js/admin-dashboard.js"></script>

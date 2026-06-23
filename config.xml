@@ -1,7 +1,8 @@
-<?xml version='1.0' encoding='utf-8'?>
+﻿<?xml version='1.0' encoding='utf-8'?>
 <widget id="pt.com.InfinityArt" version="1.0.0"
     xmlns="http://www.w3.org/ns/widgets"
-    xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    xmlns:cdv="http://cordova.apache.org/ns/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <name>InfinityArt</name>
 
@@ -17,12 +18,25 @@
     <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/screen/splashscreen.xml" />
     <preference name="AndroidWindowSplashScreenBackground" value="#0E1B4C" />
     <icon src="res/icon.jpg" />
+    <config-file target="AndroidManifest.xml" parent="/*">
+        <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    </config-file>
     </platform>
 
     <content src="index.html" />
+    <allow-navigation href="https://localhost/*" />
+    <allow-navigation href="http://localhost/*" />
 
+    
+    <access origin="https://*.googleapis.com/*" />
+    <access origin="https://www.gstatic.com/*" />
+    <access origin="https://cdn.tailwindcss.com/*" />
+    <access origin="https://*.firebaseio.com/*" />
+    <access origin="https://*.firebaseapp.com/*" />
+    <access origin="https://*.web.app/*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
 
 
 </widget>
+
